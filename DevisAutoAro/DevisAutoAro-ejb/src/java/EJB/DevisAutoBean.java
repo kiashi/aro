@@ -6,7 +6,7 @@
 package EJB;
 
 import entity.AmCategorietarifaire;
-import entity.AmCategorietarifaire_;
+
 import entity.AmPrime;
 import entity.AmTauxgaranti;
 import entity.SaisieGaranti;
