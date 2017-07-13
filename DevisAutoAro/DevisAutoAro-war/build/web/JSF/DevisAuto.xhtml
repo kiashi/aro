@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+               
+                
+                
+                <h:outputLabel value="Categorie Tarifaire:" for="categorieTarifaire" />
+                <h:inputText id="categorieTarifaire" value="#{devisAutoMotoMB.auto.categorieTarifaire.idcodetarifaire}" title="categorieTarifaire" />
+                <br></br>
+                <br></br>
+                <h:outputLabel value="puissanceFiscale" for="puissanceFiscale" />
+                <h:inputText id="puissanceFiscale" value="#{devisAutoMotoMB.auto.puissanceFiscale}" title="puissanceFiscale" />
+                <br></br>
+                <br></br>
+                <h:outputLabel value="sourceEnergie:" for="sourceEnergie" />
+                <h:inputText id="sourceEnergie" value="#{devisAutoMotoMB.auto.sourceEnergie}" title="sourceEnergie" />
+                <br></br>
+                <br></br>
+                <h:outputLabel value="poidsVide" for="poidsVide" />
+                <h:inputText id="poidsVide" value="#{devisAutoMotoMB.auto.poidsVide}" title="poidsVide" />
+                <br></br>
+                <br></br>
+                <h:outputLabel value="nbPlace" for="nbPlace" />
+                <h:inputText id="nbPlace" value="#{devisAutoMotoMB.auto.nbPlace}" title="nbPlace" />
+                <br></br>
+                <br></br>
+                <h:outputLabel value="nbRoues" for="nbRoues" />
+                <h:inputText id="nbRoues" value="#{devisAutoMotoMB.auto.nbRoues}" title="nbRoues" />
+                <br></br>
+                <br></br>
+                
+                
+                
+                    <h:dataTable value="#{devisAutoMotoMB.listeSaisieGaranti}" var="item">
+                       <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Garanti"/>
+                                </f:facet>
+                           <h:inputText value="#{item.a.libelle}"/>
+                            </h:column> 
+                        <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Limite"/>
+                                </f:facet>
+                            <h:inputText value="#{item.limite}"/>
+                            </h:column> 
+                        <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrimeNette"/>
+                                </f:facet>
+                            <h:inputText value="#{item.primeNette}"/>
+                            </h:column> 
+                    </h:dataTable>
+                
+
+                
+                <h:commandButton  value="Calculer" action="#{devisAutoMotoMB.calculer()}"> 
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+                
+                <h:outputText value="#{devisAutoMotoMB.prime}"/>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

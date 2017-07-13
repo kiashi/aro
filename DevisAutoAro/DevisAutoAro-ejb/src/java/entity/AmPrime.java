@@ -43,7 +43,7 @@ public class AmPrime implements Serializable {
     @Column(name = "IDPRIME")
     private Integer idprime;
     @Column(name = "SOURCEENERGIE")
-    private Character sourceenergie;
+    private String sourceenergie;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PUISSMIN")
     private Double puissmin;
@@ -72,11 +72,11 @@ public class AmPrime implements Serializable {
         this.idprime = idprime;
     }
 
-    public Character getSourceenergie() {
+    public String getSourceenergie() {
         return sourceenergie;
     }
 
-    public void setSourceenergie(Character sourceenergie) {
+    public void setSourceenergie(String sourceenergie) {
         this.sourceenergie = sourceenergie;
     }
 

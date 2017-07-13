@@ -31,7 +31,7 @@ public class AmCategorietarifaireBean {
      public List<AmCategorietarifaire> findByRoues(Integer a){
       Query cl= em.createQuery("SELECT p FROM AmCategorietarifaire p WHERE "
               + " p.nbrouesmin <= :roues"
-              + "AND p.nbrouesmax >= :roues");
+              + " AND p.nbrouesmax >= :roues");
       cl.setParameter("roues", a);
      
       return (List<AmCategorietarifaire>) cl.getResultList();

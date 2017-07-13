@@ -31,12 +31,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "AM_CODETARIFAIRE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AmCodetarifaire.findAll", query = "SELECT a FROM AmCodetarifaire a")
-    , @NamedQuery(name = "AmCodetarifaire.findByIdcodetarifaire", query = "SELECT a FROM AmCodetarifaire a WHERE a.idcodetarifaire = :idcodetarifaire")
-    , @NamedQuery(name = "AmCodetarifaire.findByNomenclature", query = "SELECT a FROM AmCodetarifaire a WHERE a.nomenclature = :nomenclature")
-    , @NamedQuery(name = "AmCodetarifaire.findByLibelle", query = "SELECT a FROM AmCodetarifaire a WHERE a.libelle = :libelle")
-    , @NamedQuery(name = "AmCodetarifaire.findByNbrouesmin", query = "SELECT a FROM AmCodetarifaire a WHERE a.nbrouesmin = :nbrouesmin")
-    , @NamedQuery(name = "AmCodetarifaire.findByNbrouesmax", query = "SELECT a FROM AmCodetarifaire a WHERE a.nbrouesmax = :nbrouesmax")})
+    @NamedQuery(name = "AmCategorietarifaire.findAll", query = "SELECT a FROM AmCategorietarifaire a")
+    , @NamedQuery(name = "AmCategorietarifaire.findByIdcodetarifaire", query = "SELECT a FROM AmCategorietarifaire a WHERE a.idcodetarifaire = :idcodetarifaire")
+    , @NamedQuery(name = "AmCategorietarifaire.findByNomenclature", query = "SELECT a FROM AmCategorietarifaire a WHERE a.nomenclature = :nomenclature")
+    , @NamedQuery(name = "AmCategorietarifaire.findByLibelle", query = "SELECT a FROM AmCategorietarifaire a WHERE a.libelle = :libelle")
+    , @NamedQuery(name = "AmCategorietarifaire.findByNbrouesmin", query = "SELECT a FROM AmCategorietarifaire a WHERE a.nbrouesmin = :nbrouesmin")
+    , @NamedQuery(name = "AmCategorietarifaire.findByNbrouesmax", query = "SELECT a FROM AmCategorietarifaire a WHERE a.nbrouesmax = :nbrouesmax")})
 public class AmCategorietarifaire implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -157,7 +157,7 @@ public class AmCategorietarifaire implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AmCodetarifaire[ idcodetarifaire=" + idcodetarifaire + " ]";
+        return "entity.AmCategorietarifaire[ idcodetarifaire=" + idcodetarifaire + " ]";
     }
     
 }
