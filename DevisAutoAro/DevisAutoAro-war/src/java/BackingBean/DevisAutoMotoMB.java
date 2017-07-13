@@ -41,6 +41,36 @@ public class DevisAutoMotoMB {
     private Double prime = new Double(0);
 
     private Integer dureeMois = 12;
+    
+    private Double tauxE = new Double(0);
+    private Double tauxVA = new Double(0);
+    private Double primeTotal = new Double(0);
+
+    public Double getTauxE() {
+        return tauxE;
+    }
+
+    public void setTauxE(Double tauxE) {
+        this.tauxE = tauxE;
+    }
+
+    public Double getTauxVA() {
+        return tauxVA;
+    }
+
+    public void setTauxVA(Double tauxVA) {
+        this.tauxVA = tauxVA;
+    }
+
+    public Double getPrimeTotal() {
+        return primeTotal;
+    }
+
+    public void setPrimeTotal(Double primeTotal) {
+        this.primeTotal = primeTotal;
+    }
+
+    
 
     /**
      * Creates a new instance of DevisAutoMotoMB
@@ -117,6 +147,8 @@ public class DevisAutoMotoMB {
         System.out.println("---------" + auto.getPuissanceFiscale());
         auto.setCategorieTarifaire(categorieTarifaireSelect);
         prime = devisAutoBean.calculDevis(auto, listeSaisieGaranti, dureeMois);
+        primeTotal= (prime*tauxE)+(prime*tauxVA);
+        //System.out.println("_______" + primeTotal);
         System.out.println("_________" + prime);
     }
 

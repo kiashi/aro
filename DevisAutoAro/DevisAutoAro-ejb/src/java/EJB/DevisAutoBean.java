@@ -56,7 +56,9 @@ public class DevisAutoBean {
         List<AmPrime> list = amPrimeBean.findByVehicule(a);
         Double primeNet = new Double(0);
         for (SaisieGaranti saisi : listeGaranti) {
+            
             primeNet += primeNettes(a.getCategorieTarifaire().getIdcodetarifaire(), saisi.getA().getIdamgaranti(), saisi.getLimite());
+            saisi.setPrimeNette(primeNettes(a.getCategorieTarifaire().getIdcodetarifaire(), saisi.getA().getIdamgaranti(), saisi.getLimite()));
             System.out.println("idcategorie : "+a.getCategorieTarifaire().getIdcodetarifaire()+" - idgaranti "+saisi.getA().getIdamgaranti());
         }
         System.out.println("prime net : " + primeNet);
