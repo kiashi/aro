@@ -5,6 +5,7 @@
  */
 package BackingBean;
 
+import EJB.AmCategorietarifaireBean;
 import EJB.AmGarantiBean;
 import EJB.DevisAutoBean;
 import entity.AmCategorietarifaire;
@@ -16,6 +17,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 
 /**
  *
@@ -26,24 +30,53 @@ import javax.enterprise.context.RequestScoped;
 public class DevisAutoMotoMB {
 
     @EJB
+    private AmCategorietarifaireBean amCategorietarifaireBean;
+
+    @EJB
     private AmGarantiBean amGarantiBean;
 
     @EJB
     private DevisAutoBean devisAutoBean;
-    
+
     private Double prime = new Double(0);
-    
+
+    private Integer dureeMois = 12;
 
     /**
      * Creates a new instance of DevisAutoMotoMB
      */
     private List<SaisieGaranti> listeSaisieGaranti;
+    private List<AmCategorietarifaire> listeCategorieTarifaire;
+    private AmCategorietarifaire categorieTarifaireSelect;
+
+    private Converter catTarifaireConverter = new Converter() {
+        /**
+         * Convertit une String en Magasin.
+         *
+         * @param value valeur à convertir
+         */
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            return amCategorietarifaireBean.findById(new Integer(value));
+        }
+
+        /**
+         * Convertit un Magasin en String.
+         *
+         * @param value valeur à convertir
+         */
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            AmCategorietarifaire catTarifaire = (AmCategorietarifaire) value;
+            return catTarifaire.getIdcodetarifaire() + "";
+        }
+    };
 
     public List<SaisieGaranti> getListeSaisieGaranti() {
-        if(listeSaisieGaranti==null){
+        if (listeSaisieGaranti == null) {
             listeSaisieGaranti = new ArrayList<SaisieGaranti>();
-            List<AmGaranti> listeGaranti=  amGarantiBean.findAll();
-            for(AmGaranti a:listeGaranti){
+            List<AmGaranti> listeGaranti = amGarantiBean.findAll();
+            for (AmGaranti a : listeGaranti) {
                 SaisieGaranti b = new SaisieGaranti();
                 b.setA(a);
                 b.setActif(Boolean.FALSE);
@@ -58,18 +91,15 @@ public class DevisAutoMotoMB {
     public void setListeSaisieGaranti(List<SaisieGaranti> listeSaisieGaranti) {
         this.listeSaisieGaranti = listeSaisieGaranti;
     }
-    
-    
 
-   
-    private Vehicule auto= new Vehicule();
+    private Vehicule auto = new Vehicule();
+
     public DevisAutoMotoMB() {
-        
+
     }
-   
 
     public Vehicule getAuto() {
-        if(auto.getCategorieTarifaire()==null){
+        if (auto.getCategorieTarifaire() == null) {
             AmCategorietarifaire amc = new AmCategorietarifaire();
             amc.setIdcodetarifaire(1);
             auto.setCategorieTarifaire(amc);
@@ -80,13 +110,14 @@ public class DevisAutoMotoMB {
     public void setAuto(Vehicule auto) {
         this.auto = auto;
     }
-    public void calculer(){
-        System.out.println("---------"+auto.getSourceEnergie());
-        System.out.println("---------"+auto.getNbPlace());
-        System.out.println("---------"+auto.getPuissanceFiscale());
-        
-        prime = devisAutoBean.calculDevis(auto, listeSaisieGaranti);
-        System.out.println("_________"+prime);
+
+    public void calculer() {
+        System.out.println("---------" + auto.getSourceEnergie());
+        System.out.println("---------" + auto.getNbPlace());
+        System.out.println("---------" + auto.getPuissanceFiscale());
+        auto.setCategorieTarifaire(categorieTarifaireSelect);
+        prime = devisAutoBean.calculDevis(auto, listeSaisieGaranti, dureeMois);
+        System.out.println("_________" + prime);
     }
 
     public Double getPrime() {
@@ -96,5 +127,40 @@ public class DevisAutoMotoMB {
     public void setPrime(Double prime) {
         this.prime = prime;
     }
-    
+
+    public Integer getDureeMois() {
+        return dureeMois;
+    }
+
+    public void setDureeMois(Integer dureeMois) {
+        this.dureeMois = dureeMois;
+    }
+
+    public List<AmCategorietarifaire> getListeCategorieTarifaire() {
+        if (listeCategorieTarifaire == null) {
+            listeCategorieTarifaire = amCategorietarifaireBean.findAll();
+        }
+        return listeCategorieTarifaire;
+    }
+
+    public void setListeCategorieTarifaire(List<AmCategorietarifaire> listeCategorieTarifaire) {
+        this.listeCategorieTarifaire = listeCategorieTarifaire;
+    }
+
+    public AmCategorietarifaire getCategorieTarifaireSelect() {
+        return categorieTarifaireSelect;
+    }
+
+    public void setCategorieTarifaireSelect(AmCategorietarifaire categorieTarifaireSelect) {
+        this.categorieTarifaireSelect = categorieTarifaireSelect;
+    }
+
+    public Converter getCatTarifaireConverter() {
+        return catTarifaireConverter;
+    }
+
+    public void setCatTarifaireConverter(Converter catTarifaireConverter) {
+        this.catTarifaireConverter = catTarifaireConverter;
+    }
+
 }

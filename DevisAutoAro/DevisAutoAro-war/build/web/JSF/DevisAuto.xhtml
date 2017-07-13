@@ -9,11 +9,21 @@
     <h:body>
         <f:view>
             <h:form>
-               
-                
-                
+
+                <h:outputLabel value="Durée (mois):" for="nbMois" />
+                <h:inputText id="nbMois" value="#{devisAutoMotoMB.dureeMois}" title="nbMois" />
+                <br></br>
+                <br></br>
                 <h:outputLabel value="Categorie Tarifaire:" for="categorieTarifaire" />
-                <h:inputText id="categorieTarifaire" value="#{devisAutoMotoMB.auto.categorieTarifaire.idcodetarifaire}" title="categorieTarifaire" />
+
+                <h:selectOneMenu class="form-control" id="magasin" value="#{devisAutoMotoMB.categorieTarifaireSelect}"
+                                 converter="#{devisAutoMotoMB.catTarifaireConverter}">
+                    <f:selectItems value="#{devisAutoMotoMB.listeCategorieTarifaire}" 
+                                   var="categorieTarifaire"
+                                   itemValue="#{categorieTarifaire}"
+                                   itemLabel="#{categorieTarifaire.nomenclature}"/>
+                </h:selectOneMenu>
+
                 <br></br>
                 <br></br>
                 <h:outputLabel value="puissanceFiscale" for="puissanceFiscale" />
@@ -36,36 +46,36 @@
                 <h:inputText id="nbRoues" value="#{devisAutoMotoMB.auto.nbRoues}" title="nbRoues" />
                 <br></br>
                 <br></br>
-                
-                
-                
-                    <h:dataTable value="#{devisAutoMotoMB.listeSaisieGaranti}" var="item">
-                       <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Garanti"/>
-                                </f:facet>
-                           <h:inputText value="#{item.a.libelle}"/>
-                            </h:column> 
-                        <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Limite"/>
-                                </f:facet>
-                            <h:inputText value="#{item.limite}"/>
-                            </h:column> 
-                        <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="PrimeNette"/>
-                                </f:facet>
-                            <h:inputText value="#{item.primeNette}"/>
-                            </h:column> 
-                    </h:dataTable>
-                
 
-                
+
+
+                <h:dataTable value="#{devisAutoMotoMB.listeSaisieGaranti}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Garanti"/>
+                        </f:facet>
+                        <h:inputText value="#{item.a.libelle}"/>
+                    </h:column> 
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Limite"/>
+                        </f:facet>
+                        <h:inputText value="#{item.limite}"/>
+                    </h:column> 
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PrimeNette"/>
+                        </f:facet>
+                        <h:inputText value="#{item.primeNette}"/>
+                    </h:column> 
+                </h:dataTable>
+
+
+
                 <h:commandButton  value="Calculer" action="#{devisAutoMotoMB.calculer()}"> 
                     <f:ajax execute="@form" render="@form" />
                 </h:commandButton>
-                
+
                 <h:outputText value="#{devisAutoMotoMB.prime}"/>
             </h:form>
         </f:view>

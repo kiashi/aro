@@ -52,7 +52,7 @@ public class DevisAutoBean {
         return res;
     }
 
-    public Double calculDevis(Vehicule a, List<SaisieGaranti> listeGaranti) {
+    public Double calculDevis(Vehicule a, List<SaisieGaranti> listeGaranti, Integer nbMois) {
         List<AmPrime> list = amPrimeBean.findByVehicule(a);
         Double primeNet = new Double(0);
         for (SaisieGaranti saisi : listeGaranti) {
@@ -60,7 +60,7 @@ public class DevisAutoBean {
             System.out.println("idcategorie : "+a.getCategorieTarifaire().getIdcodetarifaire()+" - idgaranti "+saisi.getA().getIdamgaranti());
         }
         System.out.println("prime net : " + primeNet);
-        return primeNet + list.get(0).getPrimepayant();
+        return (primeNet + list.get(0).getPrimepayant())*nbMois/12;
     }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

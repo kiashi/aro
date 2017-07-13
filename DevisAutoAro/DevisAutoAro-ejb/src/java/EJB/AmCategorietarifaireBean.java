@@ -28,14 +28,26 @@ public class AmCategorietarifaireBean {
         em.persist(object);
     }
 
-     public List<AmCategorietarifaire> findByRoues(Integer a){
-      Query cl= em.createQuery("SELECT p FROM AmCategorietarifaire p WHERE "
-              + " p.nbrouesmin <= :roues"
-              + " AND p.nbrouesmax >= :roues");
-      cl.setParameter("roues", a);
-     
-      return (List<AmCategorietarifaire>) cl.getResultList();
-        
+    public List<AmCategorietarifaire> findByRoues(Integer a) {
+        Query cl = em.createQuery("SELECT p FROM AmCategorietarifaire p WHERE "
+                + " p.nbrouesmin <= :roues"
+                + " AND p.nbrouesmax >= :roues");
+        cl.setParameter("roues", a);
+
+        return (List<AmCategorietarifaire>) cl.getResultList();
+
+    }
+
+    public AmCategorietarifaire findById(Integer id) {
+        Query cl = em.createNamedQuery("AmCategorietarifaire.findByIdcodetarifaire");
+        cl.setParameter("idcodetarifaire", id);
+        return (AmCategorietarifaire) cl.getResultList().get(0);
+    }
+
+    public List<AmCategorietarifaire> findAll() {
+        Query cl = em.createNamedQuery("AmCategorietarifaire.findAll");
+        return (List<AmCategorietarifaire>) cl.getResultList();
+
     }
 
     // Add business logic below. (Right-click in editor and choose
