@@ -29,8 +29,8 @@ public class AmTauxGarantiBean {
     }
     
     public List<AmTauxgaranti> findByTaux(Integer idCodetarifaire, Integer idgaranti){
-      Query cl= em.createQuery("SELECT p FROM AmTauxgaranti p WHERE p.idcodetarifaire.idcodetarifaire = :tarif "
-              + " AND p.idamgaranti.idamgaranti = :garanti");
+      Query cl= em.createQuery("SELECT p FROM AmTauxgaranti p WHERE p.amCategorietarifaire.id = :tarif "
+              + " AND p.amGaranti.id = :garanti");
       cl.setParameter("tarif", idCodetarifaire);
       cl.setParameter("garanti", idgaranti);
      

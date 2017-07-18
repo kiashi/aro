@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,14 +21,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kiashi
+ * @author Misaina
  */
 @Entity
 @Table(name = "AM_TAUXGARANTI")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AmTauxgaranti.findAll", query = "SELECT a FROM AmTauxgaranti a")
-    , @NamedQuery(name = "AmTauxgaranti.findByIdgaranti", query = "SELECT a FROM AmTauxgaranti a WHERE a.idgaranti = :idgaranti")
+    , @NamedQuery(name = "AmTauxgaranti.findById", query = "SELECT a FROM AmTauxgaranti a WHERE a.id = :id")
     , @NamedQuery(name = "AmTauxgaranti.findByLibelle", query = "SELECT a FROM AmTauxgaranti a WHERE a.libelle = :libelle")
     , @NamedQuery(name = "AmTauxgaranti.findByTaux", query = "SELECT a FROM AmTauxgaranti a WHERE a.taux = :taux")})
 public class AmTauxgaranti implements Serializable {
@@ -38,34 +37,34 @@ public class AmTauxgaranti implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDGARANTI")
-    private Integer idgaranti;
+    @Column(name = "ID")
+    private Integer id;
     @Size(max = 150)
     @Column(name = "LIBELLE")
     private String libelle;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "TAUX")
     private Double taux;
-    @JoinColumn(name = "IDCODETARIFAIRE", referencedColumnName = "IDCODETARIFAIRE")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private AmCategorietarifaire idcodetarifaire;
-    @JoinColumn(name = "IDAMGARANTI", referencedColumnName = "IDAMGARANTI")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private AmGaranti idamgaranti;
+    @JoinColumn(name = "AM_CATEGORIETARIFAIRE_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private AmCategorietarifaire amCategorietarifaire;
+    @JoinColumn(name = "AM_GARANTI_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private AmGaranti amGaranti;
 
     public AmTauxgaranti() {
     }
 
-    public AmTauxgaranti(Integer idgaranti) {
-        this.idgaranti = idgaranti;
+    public AmTauxgaranti(Integer id) {
+        this.id = id;
     }
 
-    public Integer getIdgaranti() {
-        return idgaranti;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdgaranti(Integer idgaranti) {
-        this.idgaranti = idgaranti;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getLibelle() {
@@ -84,26 +83,26 @@ public class AmTauxgaranti implements Serializable {
         this.taux = taux;
     }
 
-    public AmCategorietarifaire getIdcodetarifaire() {
-        return idcodetarifaire;
+    public AmCategorietarifaire getAmCategorietarifaire() {
+        return amCategorietarifaire;
     }
 
-    public void setIdcodetarifaire(AmCategorietarifaire idcodetarifaire) {
-        this.idcodetarifaire = idcodetarifaire;
+    public void setAmCategorietarifaire(AmCategorietarifaire amCategorietarifaire) {
+        this.amCategorietarifaire = amCategorietarifaire;
     }
 
-    public AmGaranti getIdamgaranti() {
-        return idamgaranti;
+    public AmGaranti getAmGaranti() {
+        return amGaranti;
     }
 
-    public void setIdamgaranti(AmGaranti idamgaranti) {
-        this.idamgaranti = idamgaranti;
+    public void setAmGaranti(AmGaranti amGaranti) {
+        this.amGaranti = amGaranti;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idgaranti != null ? idgaranti.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -114,7 +113,7 @@ public class AmTauxgaranti implements Serializable {
             return false;
         }
         AmTauxgaranti other = (AmTauxgaranti) object;
-        if ((this.idgaranti == null && other.idgaranti != null) || (this.idgaranti != null && !this.idgaranti.equals(other.idgaranti))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -122,7 +121,7 @@ public class AmTauxgaranti implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AmTauxgaranti[ idgaranti=" + idgaranti + " ]";
+        return "entity.AmTauxgaranti[ id=" + id + " ]";
     }
     
 }

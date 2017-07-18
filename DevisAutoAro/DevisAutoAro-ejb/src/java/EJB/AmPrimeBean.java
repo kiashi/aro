@@ -32,10 +32,10 @@ public class AmPrimeBean {
       Query cl= em.createQuery("SELECT p FROM AmPrime p WHERE "
               + "  p.puissmin <= :puissance"
               + " AND p.puissmax >= :puissance"
-              + " AND p.idcodetarifaire.idcodetarifaire = :idcat");
+              + " AND p.amCategorietarifaire.id = :idcat");
       //cl.setParameter("se", a.getSourceEnergie());
       cl.setParameter("puissance", a.getPuissanceFiscale());
-      cl.setParameter("idcat", a.getCategorieTarifaire().getIdcodetarifaire());
+      cl.setParameter("idcat", a.getCategorieTarifaire().getId());
       return (List<AmPrime>) cl.getResultList();
         
     }

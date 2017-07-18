@@ -57,9 +57,9 @@ public class DevisAutoBean {
         Double primeNet = new Double(0);
         for (SaisieGaranti saisi : listeGaranti) {
             
-            primeNet += primeNettes(a.getCategorieTarifaire().getIdcodetarifaire(), saisi.getA().getIdamgaranti(), saisi.getLimite());
-            saisi.setPrimeNette(primeNettes(a.getCategorieTarifaire().getIdcodetarifaire(), saisi.getA().getIdamgaranti(), saisi.getLimite()));
-            System.out.println("idcategorie : "+a.getCategorieTarifaire().getIdcodetarifaire()+" - idgaranti "+saisi.getA().getIdamgaranti());
+            primeNet += primeNettes(a.getCategorieTarifaire().getId(), saisi.getA().getId(), saisi.getLimite());
+            saisi.setPrimeNette(primeNettes(a.getCategorieTarifaire().getId(), saisi.getA().getId(), saisi.getLimite()));
+            System.out.println("idcategorie : "+a.getCategorieTarifaire().getId()+" - idgaranti "+saisi.getA().getId());
         }
         System.out.println("prime net : " + primeNet);
         return (primeNet + list.get(0).getPrimepayant())*nbMois/12;

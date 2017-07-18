@@ -98,7 +98,7 @@ public class DevisAutoMotoMB {
         @Override
         public String getAsString(FacesContext context, UIComponent component, Object value) {
             AmCategorietarifaire catTarifaire = (AmCategorietarifaire) value;
-            return catTarifaire.getIdcodetarifaire() + "";
+            return catTarifaire.getId() + "";
         }
     };
 
@@ -131,7 +131,7 @@ public class DevisAutoMotoMB {
     public Vehicule getAuto() {
         if (auto.getCategorieTarifaire() == null) {
             AmCategorietarifaire amc = new AmCategorietarifaire();
-            amc.setIdcodetarifaire(1);
+            amc.setId(1);
             auto.setCategorieTarifaire(amc);
         }
         return auto;

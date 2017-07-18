@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,14 +23,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kiashi
+ * @author Misaina
  */
 @Entity
 @Table(name = "AM_GARANTI")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AmGaranti.findAll", query = "SELECT a FROM AmGaranti a")
-    , @NamedQuery(name = "AmGaranti.findByIdamgaranti", query = "SELECT a FROM AmGaranti a WHERE a.idamgaranti = :idamgaranti")
+    , @NamedQuery(name = "AmGaranti.findById", query = "SELECT a FROM AmGaranti a WHERE a.id = :id")
     , @NamedQuery(name = "AmGaranti.findByLibelle", query = "SELECT a FROM AmGaranti a WHERE a.libelle = :libelle")
     , @NamedQuery(name = "AmGaranti.findByCode", query = "SELECT a FROM AmGaranti a WHERE a.code = :code")})
 public class AmGaranti implements Serializable {
@@ -40,30 +39,30 @@ public class AmGaranti implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDAMGARANTI")
-    private Integer idamgaranti;
+    @Column(name = "ID")
+    private Integer id;
     @Size(max = 150)
     @Column(name = "LIBELLE")
     private String libelle;
     @Size(max = 20)
     @Column(name = "CODE")
     private String code;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idamgaranti", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amGaranti")
     private List<AmTauxgaranti> amTauxgarantiList;
 
     public AmGaranti() {
     }
 
-    public AmGaranti(Integer idamgaranti) {
-        this.idamgaranti = idamgaranti;
+    public AmGaranti(Integer id) {
+        this.id = id;
     }
 
-    public Integer getIdamgaranti() {
-        return idamgaranti;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdamgaranti(Integer idamgaranti) {
-        this.idamgaranti = idamgaranti;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getLibelle() {
@@ -94,7 +93,7 @@ public class AmGaranti implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idamgaranti != null ? idamgaranti.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -105,7 +104,7 @@ public class AmGaranti implements Serializable {
             return false;
         }
         AmGaranti other = (AmGaranti) object;
-        if ((this.idamgaranti == null && other.idamgaranti != null) || (this.idamgaranti != null && !this.idamgaranti.equals(other.idamgaranti))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -113,7 +112,7 @@ public class AmGaranti implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AmGaranti[ idamgaranti=" + idamgaranti + " ]";
+        return "entity.AmGaranti[ id=" + id + " ]";
     }
     
 }

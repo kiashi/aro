@@ -39,8 +39,8 @@ public class AmCategorietarifaireBean {
     }
 
     public AmCategorietarifaire findById(Integer id) {
-        Query cl = em.createNamedQuery("AmCategorietarifaire.findByIdcodetarifaire");
-        cl.setParameter("idcodetarifaire", id);
+        Query cl = em.createNamedQuery("AmCategorietarifaire.findById");
+        cl.setParameter("id", id);
         return (AmCategorietarifaire) cl.getResultList().get(0);
     }
 

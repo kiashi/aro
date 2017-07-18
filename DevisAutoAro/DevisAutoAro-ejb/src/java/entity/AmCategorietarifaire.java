@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,64 +24,65 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author kiashi
+ * @author Misaina
  */
 @Entity
-@Table(name = "AM_CODETARIFAIRE")
+@Table(name = "AM_CATEGORIETARIFAIRE")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AmCategorietarifaire.findAll", query = "SELECT a FROM AmCategorietarifaire a")
-    , @NamedQuery(name = "AmCategorietarifaire.findByIdcodetarifaire", query = "SELECT a FROM AmCategorietarifaire a WHERE a.idcodetarifaire = :idcodetarifaire")
+    , @NamedQuery(name = "AmCategorietarifaire.findById", query = "SELECT a FROM AmCategorietarifaire a WHERE a.id = :id")
     , @NamedQuery(name = "AmCategorietarifaire.findByNomenclature", query = "SELECT a FROM AmCategorietarifaire a WHERE a.nomenclature = :nomenclature")
     , @NamedQuery(name = "AmCategorietarifaire.findByLibelle", query = "SELECT a FROM AmCategorietarifaire a WHERE a.libelle = :libelle")
     , @NamedQuery(name = "AmCategorietarifaire.findByNbrouesmin", query = "SELECT a FROM AmCategorietarifaire a WHERE a.nbrouesmin = :nbrouesmin")
-    , @NamedQuery(name = "AmCategorietarifaire.findByNbrouesmax", query = "SELECT a FROM AmCategorietarifaire a WHERE a.nbrouesmax = :nbrouesmax")})
+    , @NamedQuery(name = "AmCategorietarifaire.findByNbrouesmax", query = "SELECT a FROM AmCategorietarifaire a WHERE a.nbrouesmax = :nbrouesmax")
+    , @NamedQuery(name = "AmCategorietarifaire.findByDescription", query = "SELECT a FROM AmCategorietarifaire a WHERE a.description = :description")})
 public class AmCategorietarifaire implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDCODETARIFAIRE")
-    private Integer idcodetarifaire;
+    @Column(name = "ID")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
     @Column(name = "NOMENCLATURE")
     private String nomenclature;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 150)
+    @Size(max = 150)
     @Column(name = "LIBELLE")
     private String libelle;
     @Column(name = "NBROUESMIN")
     private BigInteger nbrouesmin;
     @Column(name = "NBROUESMAX")
     private BigInteger nbrouesmax;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcodetarifaire", fetch = FetchType.LAZY)
-    private List<AmPrime> amPrimeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcodetarifaire", fetch = FetchType.LAZY)
+    @Size(max = 400)
+    @Column(name = "DESCRIPTION")
+    private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amCategorietarifaire")
     private List<AmTauxgaranti> amTauxgarantiList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amCategorietarifaire")
+    private List<AmPrime> amPrimeList;
 
     public AmCategorietarifaire() {
     }
 
-    public AmCategorietarifaire(Integer idcodetarifaire) {
-        this.idcodetarifaire = idcodetarifaire;
+    public AmCategorietarifaire(Integer id) {
+        this.id = id;
     }
 
-    public AmCategorietarifaire(Integer idcodetarifaire, String nomenclature, String libelle) {
-        this.idcodetarifaire = idcodetarifaire;
+    public AmCategorietarifaire(Integer id, String nomenclature) {
+        this.id = id;
         this.nomenclature = nomenclature;
-        this.libelle = libelle;
     }
 
-    public Integer getIdcodetarifaire() {
-        return idcodetarifaire;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdcodetarifaire(Integer idcodetarifaire) {
-        this.idcodetarifaire = idcodetarifaire;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNomenclature() {
@@ -117,13 +117,12 @@ public class AmCategorietarifaire implements Serializable {
         this.nbrouesmax = nbrouesmax;
     }
 
-    @XmlTransient
-    public List<AmPrime> getAmPrimeList() {
-        return amPrimeList;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAmPrimeList(List<AmPrime> amPrimeList) {
-        this.amPrimeList = amPrimeList;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @XmlTransient
@@ -135,10 +134,19 @@ public class AmCategorietarifaire implements Serializable {
         this.amTauxgarantiList = amTauxgarantiList;
     }
 
+    @XmlTransient
+    public List<AmPrime> getAmPrimeList() {
+        return amPrimeList;
+    }
+
+    public void setAmPrimeList(List<AmPrime> amPrimeList) {
+        this.amPrimeList = amPrimeList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idcodetarifaire != null ? idcodetarifaire.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -149,7 +157,7 @@ public class AmCategorietarifaire implements Serializable {
             return false;
         }
         AmCategorietarifaire other = (AmCategorietarifaire) object;
-        if ((this.idcodetarifaire == null && other.idcodetarifaire != null) || (this.idcodetarifaire != null && !this.idcodetarifaire.equals(other.idcodetarifaire))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -157,7 +165,7 @@ public class AmCategorietarifaire implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AmCategorietarifaire[ idcodetarifaire=" + idcodetarifaire + " ]";
+        return "entity.AmCategorietarifaire[ id=" + id + " ]";
     }
     
 }

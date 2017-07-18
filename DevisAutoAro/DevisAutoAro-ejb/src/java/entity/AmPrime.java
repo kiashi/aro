@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,18 +16,19 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author kiashi
+ * @author Misaina
  */
 @Entity
 @Table(name = "AM_PRIME")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AmPrime.findAll", query = "SELECT a FROM AmPrime a")
-    , @NamedQuery(name = "AmPrime.findByIdprime", query = "SELECT a FROM AmPrime a WHERE a.idprime = :idprime")
+    , @NamedQuery(name = "AmPrime.findById", query = "SELECT a FROM AmPrime a WHERE a.id = :id")
     , @NamedQuery(name = "AmPrime.findBySourceenergie", query = "SELECT a FROM AmPrime a WHERE a.sourceenergie = :sourceenergie")
     , @NamedQuery(name = "AmPrime.findByPuissmin", query = "SELECT a FROM AmPrime a WHERE a.puissmin = :puissmin")
     , @NamedQuery(name = "AmPrime.findByPuissmax", query = "SELECT a FROM AmPrime a WHERE a.puissmax = :puissmax")
@@ -40,8 +40,9 @@ public class AmPrime implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDPRIME")
-    private Integer idprime;
+    @Column(name = "ID")
+    private Integer id;
+    @Size(max = 5)
     @Column(name = "SOURCEENERGIE")
     private String sourceenergie;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -53,23 +54,23 @@ public class AmPrime implements Serializable {
     private Double primegratuit;
     @Column(name = "PRIMEPAYANT")
     private Double primepayant;
-    @JoinColumn(name = "IDCODETARIFAIRE", referencedColumnName = "IDCODETARIFAIRE")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private AmCategorietarifaire idcodetarifaire;
+    @JoinColumn(name = "AM_CATEGORIETARIFAIRE_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private AmCategorietarifaire amCategorietarifaire;
 
     public AmPrime() {
     }
 
-    public AmPrime(Integer idprime) {
-        this.idprime = idprime;
+    public AmPrime(Integer id) {
+        this.id = id;
     }
 
-    public Integer getIdprime() {
-        return idprime;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdprime(Integer idprime) {
-        this.idprime = idprime;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getSourceenergie() {
@@ -112,18 +113,18 @@ public class AmPrime implements Serializable {
         this.primepayant = primepayant;
     }
 
-    public AmCategorietarifaire getIdcodetarifaire() {
-        return idcodetarifaire;
+    public AmCategorietarifaire getAmCategorietarifaire() {
+        return amCategorietarifaire;
     }
 
-    public void setIdcodetarifaire(AmCategorietarifaire idcodetarifaire) {
-        this.idcodetarifaire = idcodetarifaire;
+    public void setAmCategorietarifaire(AmCategorietarifaire amCategorietarifaire) {
+        this.amCategorietarifaire = amCategorietarifaire;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idprime != null ? idprime.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -134,7 +135,7 @@ public class AmPrime implements Serializable {
             return false;
         }
         AmPrime other = (AmPrime) object;
-        if ((this.idprime == null && other.idprime != null) || (this.idprime != null && !this.idprime.equals(other.idprime))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -142,7 +143,7 @@ public class AmPrime implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AmPrime[ idprime=" + idprime + " ]";
+        return "entity.AmPrime[ id=" + id + " ]";
     }
     
 }
