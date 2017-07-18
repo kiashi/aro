@@ -46,7 +46,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Client.findByTel", query = "SELECT c FROM Client c WHERE c.tel = :tel")
     , @NamedQuery(name = "Client.findByEmail", query = "SELECT c FROM Client c WHERE c.email = :email")
     , @NamedQuery(name = "Client.findByMdp", query = "SELECT c FROM Client c WHERE c.mdp = :mdp")
-    , @NamedQuery(name = "Client.findByNopolice", query = "SELECT c FROM Client c WHERE c.nopolice = :nopolice")
     , @NamedQuery(name = "Client.findByNoclient", query = "SELECT c FROM Client c WHERE c.noclient = :noclient")
     , @NamedQuery(name = "Client.findByDateSouscription", query = "SELECT c FROM Client c WHERE c.dateSouscription = :dateSouscription")})
 public class Client implements Serializable {
