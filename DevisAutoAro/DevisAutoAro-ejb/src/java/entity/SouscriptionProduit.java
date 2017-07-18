@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -69,6 +70,9 @@ public class SouscriptionProduit implements Serializable {
     @JoinColumn(name = "PRODUIT_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Produit produit;
+    @Size(max = 6)
+    @Column(name = "NOPOLICE")
+    private String nopolice;
 
     public SouscriptionProduit() {
     }
@@ -150,6 +154,14 @@ public class SouscriptionProduit implements Serializable {
         this.produit = produit;
     }
 
+    public String getNopolice() {
+        return nopolice;
+    }
+
+    public void setNopolice(String nopolice) {
+        this.nopolice = nopolice;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -174,5 +186,5 @@ public class SouscriptionProduit implements Serializable {
     public String toString() {
         return "entity.SouscriptionProduit[ id=" + id + " ]";
     }
-    
+
 }

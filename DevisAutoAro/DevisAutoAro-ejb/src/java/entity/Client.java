@@ -88,9 +88,9 @@ public class Client implements Serializable {
     @Size(max = 30)
     @Column(name = "MDP")
     private String mdp;
-    @Size(max = 6)
-    @Column(name = "NOPOLICE")
-    private String nopolice;
+//    @Size(max = 6)
+//    @Column(name = "NOPOLICE")
+//    private String nopolice;
     @Size(max = 10)
     @Column(name = "NOCLIENT")
     private String noclient;
@@ -205,14 +205,6 @@ public class Client implements Serializable {
 
     public void setMdp(String mdp) {
         this.mdp = mdp;
-    }
-
-    public String getNopolice() {
-        return nopolice;
-    }
-
-    public void setNopolice(String nopolice) {
-        this.nopolice = nopolice;
     }
 
     public String getNoclient() {
