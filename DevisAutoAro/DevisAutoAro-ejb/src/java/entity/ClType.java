@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -36,7 +38,7 @@ public class ClType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "ID")
     private Integer id;
@@ -85,7 +87,7 @@ public class ClType implements Serializable {
         return hash;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof ClType)) {
@@ -96,11 +98,19 @@ public class ClType implements Serializable {
             return false;
         }
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {
         return "entity.ClType[ id=" + id + " ]";
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        if (this.id == ((ClType) obj).id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

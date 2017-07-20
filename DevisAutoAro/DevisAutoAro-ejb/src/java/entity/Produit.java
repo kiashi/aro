@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -37,7 +39,7 @@ public class Produit implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "ID")
     private Integer id;
@@ -47,8 +49,20 @@ public class Produit implements Serializable {
     @Size(max = 80)
     @Column(name = "DESCRIPTION")
     private String description;
+    @Size(max = 50)
+    @Column(name = "NOMPAGE")
+    private String nompage;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
     private List<SouscriptionProduit> souscriptionProduitList;
+
+    public String getNompage() {
+        return nompage;
+    }
+
+    public void setNompage(String nompage) {
+        this.nompage = nompage;
+    }
+    
 
     public Produit() {
     }

@@ -5,8 +5,15 @@
         <group>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/WEB-INF/template-front/template.xhtml</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/DevisAuto.xhtml</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/ClientMB.java</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/WEB-INF/template-front/header.xhtml</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/produits.xhtml</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/DevisAutoMotoMB.java</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/accueil.xhtml</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/ajoutClient.xhtml</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/login.xhtml</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/ProduitMB.java</file>
         </group>
     </open-files>
 </project-private>
