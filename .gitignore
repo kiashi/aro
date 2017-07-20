@@ -25,5 +25,9 @@ hs_err_pid*
 *.MF
 *.properties
 *.res
+<<<<<<< HEAD
 *.MF
 /build/
+=======
+/DevisAutoAro/build/
+>>>>>>> db295b0ea7a5c0b88ffb46c6f51c61ebb6cb4930

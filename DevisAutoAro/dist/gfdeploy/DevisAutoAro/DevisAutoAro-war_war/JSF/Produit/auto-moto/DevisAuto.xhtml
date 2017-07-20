@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../WEB-INF/template-front/template.xhtml">
+
+            <ui:define name="content">
+
+                <f:view>
+                    <h:form>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h:outputLabel value="Durée (mois):" for="nbMois" />
+                                <h:selectOneMenu class="form-control" id="nbMois" value = "#{devisAutoMotoMB.dureeMois}" title="nbMois"> 
+                                    <f:selectItem itemValue = "1" itemLabel = "1" /> 
+                                    <f:selectItem itemValue = "2" itemLabel = "2" />
+                                    <f:selectItem itemValue = "3" itemLabel = "3" />
+                                    <f:selectItem itemValue = "4" itemLabel = "4" />
+                                    <f:selectItem itemValue = "5" itemLabel = "5" />
+                                    <f:selectItem itemValue = "6" itemLabel = "6" />
+                                    <f:selectItem itemValue = "7" itemLabel = "7" />
+                                    <f:selectItem itemValue = "8" itemLabel = "8" />
+                                    <f:selectItem itemValue = "9" itemLabel = "9" />
+                                    <f:selectItem itemValue = "10" itemLabel = "10" />
+                                    <f:selectItem itemValue = "11" itemLabel = "11" />
+                                    <f:selectItem itemValue = "12" itemLabel = "12" />
+                                </h:selectOneMenu>
+                                <h:outputLabel value="Categorie Tarifaire:" for="categorieTarifaire" />
+
+                                <h:selectOneMenu class="form-control" id="devis" value="#{devisAutoMotoMB.categorieTarifaireSelect}"
+                                                 converter="#{devisAutoMotoMB.catTarifaireConverter}">
+                                    <f:selectItems value="#{devisAutoMotoMB.listeCategorieTarifaire}" 
+                                                   var="categorieTarifaire"
+                                                   itemValue="#{categorieTarifaire}"
+                                                   itemLabel="#{categorieTarifaire.nomenclature}"/>
+                                </h:selectOneMenu>
+
+
+                                <h:outputLabel value="Puissance Fiscale" for="puissanceFiscale" />
+                                <h:inputText  class="form-control"  id="puissanceFiscale" value="#{devisAutoMotoMB.auto.puissanceFiscale}" title="puissanceFiscale" />
+
+                                <h:outputLabel value="Source Energie:" for="sourceEnergie" />
+                                <h:inputText  class="form-control"  id="sourceEnergie" value="#{devisAutoMotoMB.auto.sourceEnergie}" title="sourceEnergie" />
+
+                                <h:outputLabel value="Poids Vide" for="poidsVide" />
+                                <h:inputText  class="form-control"  id="poidsVide" value="#{devisAutoMotoMB.auto.poidsVide}" title="poidsVide" />
+
+                                <h:outputLabel value="Nombre de Place" for="nbPlace" />
+                                <h:inputText  class="form-control"  id="nbPlace" value="#{devisAutoMotoMB.auto.nbPlace}" title="nbPlace" />
+
+                                <h:outputLabel value="Nombre de Roues" for="nbRoues" />
+                                <h:inputText  class="form-control"  id="nbRoues" value="#{devisAutoMotoMB.auto.nbRoues}" title="nbRoues" />
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <h:dataTable class="table-condensed" value="#{devisAutoMotoMB.listeSaisieGaranti}" var="item">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Garantie"/>
+                                        </f:facet>
+                                        <h:inputText  class="form-control"  value="#{item.a.libelle}"/>
+                                    </h:column> 
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Limite"/>
+                                        </f:facet>
+                                        <h:inputText  class="form-control"  value="#{item.limite}"/>
+                                    </h:column> 
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Prime Nette"/>
+                                        </f:facet>
+                                        <h:inputText  class="form-control"  value="#{item.primeNette}"/>
+                                    </h:column> 
+                                </h:dataTable>
+                            </div>
+
+                            <div class="col-md-3">
+                                
+                                <h:outputLabel value="TE : " for="tauxE" />
+                                <h:inputText class="form-control" value="#{devisAutoMotoMB.tauxE}"/>
+                                <br></br>
+                                <h:outputLabel value="TVA : " for="tauxVA" />
+                                <h:inputText class="form-control" value="#{devisAutoMotoMB.tauxVA}"/>
+                                <br></br>
+                                <h:outputLabel value="TOTAL DES PRIME NETTES : " for="sourceEnergie" />
+                                <h:outputText  value=" #{devisAutoMotoMB.prime}"/>
+                                <br></br>
+                                <h:outputLabel value="PRIME TOTAL : " for="primeTotal" />
+                                <h:outputText  value=" #{devisAutoMotoMB.primeTotal}"/>
+
+                            </div>
+                        </div>
+
+                        <br></br>
+
+                        <div class="row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <h:commandButton class="btn btn-primary" value="CALCULER" action="#{devisAutoMotoMB.calculer()}"> 
+                                <f:ajax execute="@form" render="@form" />
+                            </h:commandButton>
+
+                        </div>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+
