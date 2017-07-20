@@ -122,7 +122,7 @@ public class RetraiteMB {
         retraiteBean.save(contrat,produitSous);
 
         MessageUtil.addFlashInfoMessage("Contrat Ajouter");
-        return "/JSF/retraite/contrat?faces-redirect=true";
+        return "/JSF/Produit/retraite/contrat?faces-redirect=true";
     }
      
      private List<RtOptionRetrait> listeOptionRetrait;
