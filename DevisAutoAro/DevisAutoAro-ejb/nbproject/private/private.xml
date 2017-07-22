@@ -3,6 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Misaina/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/Client.java</file>
+            <file>file:/C:/Users/Misaina/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/SouscriptionProduit.java</file>
+            <file>file:/C:/Users/Misaina/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/Agence.java</file>
+=======
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/AmCategorietarifaire.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/Vehicule.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/RtType.java</file>
@@ -36,6 +41,7 @@
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/ProfilBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/ClientBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/SaisieGaranti.java</file>
+>>>>>>> db295b0ea7a5c0b88ffb46c6f51c61ebb6cb4930
         </group>
     </open-files>
 </project-private>
