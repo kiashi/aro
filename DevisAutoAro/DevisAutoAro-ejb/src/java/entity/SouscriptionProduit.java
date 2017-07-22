@@ -46,6 +46,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "SouscriptionProduit.findByReduction", query = "SELECT s FROM SouscriptionProduit s WHERE s.reduction = :reduction")})
 public class SouscriptionProduit implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "souscriptionProduitId")
+    private List<RtContrat> rtContratList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -187,6 +190,15 @@ public class SouscriptionProduit implements Serializable {
     @Override
     public String toString() {
         return "entity.SouscriptionProduit[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<RtContrat> getRtContratList() {
+        return rtContratList;
+    }
+
+    public void setRtContratList(List<RtContrat> rtContratList) {
+        this.rtContratList = rtContratList;
     }
 
 }

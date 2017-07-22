@@ -24,9 +24,14 @@ public class ClientBean {
     private EntityManager em;
 
     
-    public void save(Client client) {
+    public void save(Client client, int idSouscripteur) {
+        Client sous = new Client();
+        sous.setId(idSouscripteur);
+        client.setClientId(sous);
         em.persist(client);
     }
+    
+    
 
      public Client findClient(String login, String mdp){
         try{

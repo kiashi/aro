@@ -6,11 +6,13 @@
 package EJB;
 
 import entity.RtContrat;
+import entity.RtDepot;
 import entity.SouscriptionProduit;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,7 +29,17 @@ public class RetraiteBean {
         em.persist(contrat);
         em.persist(produit);
     }
-
+    
+    public void depot(RtDepot depot) {
+        em.persist(depot);
+        
+    }
+    public RtContrat findById(Integer id){
+        Query cl = em.createNamedQuery("RtContrat.findById");
+        cl.setParameter("id", id);
+        System.out.println(""+id);
+        return (RtContrat) cl.getResultList().get(0);
+    }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     

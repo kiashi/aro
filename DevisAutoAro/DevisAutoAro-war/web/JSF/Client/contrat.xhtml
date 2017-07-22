@@ -4,23 +4,28 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Produits</title>
+        <title>Mes Contrat</title>
     </h:head>
     <h:body>
-        Listes Poduits avec description
         <f:view>
 
 
             <h:form>
-
-                <h:dataTable value="#{produitMB.listeProduit}" var="item">
-
+                
+                <h:dataTable value="#{profilMB.listeContrat}" var="item">
+                 
+                   
                     <h:column>
-
-                        <h:outputText value="#{item.intitule}" />
+                       
+                        <h:outputText value="#{item.produit.intitule}"/>
                     </h:column>
                     <h:column>
-                        <h:link rendered="#{clientSession!=null}" outcome="/JSF/Produit/#{item.nompage}/#{item.nompage}?idProduit=#{item.id}" includeViewParams="true" value="Se souscrire"/>
+                       
+                        <h:outputText value="#{item.nopolice}"/>
+                    </h:column>
+                     <h:column>
+                       
+                         <h:link outcome="/JSF/Produit/#{item.produit.nompage}/depot?idContrat=#{item.id}" includeViewParams="true" value="Gérer"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

@@ -43,6 +43,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "RtContrat.findByBeneficiaireCasDeces", query = "SELECT r FROM RtContrat r WHERE r.beneficiaireCasDeces = :beneficiaireCasDeces")})
 public class RtContrat implements Serializable {
 
+    @JoinColumn(name = "SOUSCRIPTION_PRODUIT_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private SouscriptionProduit souscriptionProduitId;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -176,6 +180,14 @@ public class RtContrat implements Serializable {
     @Override
     public String toString() {
         return "entity.RtContrat[ id=" + id + " ]";
+    }
+
+    public SouscriptionProduit getSouscriptionProduitId() {
+        return souscriptionProduitId;
+    }
+
+    public void setSouscriptionProduitId(SouscriptionProduit souscriptionProduitId) {
+        this.souscriptionProduitId = souscriptionProduitId;
     }
     
 }

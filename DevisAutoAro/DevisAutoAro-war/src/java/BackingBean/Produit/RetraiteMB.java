@@ -51,16 +51,13 @@ public class RetraiteMB {
 
     @EJB
     private ProduitBean produitBean;
-    
-    
 
-    
     /**
      * Creates a new instance of RetraiteMB
      */
     public RetraiteMB() {
     }
-    private Produit produit= new Produit();
+    private Produit produit = new Produit();
     private int idProduit;
     private RtContrat contrat = new RtContrat();
 
@@ -72,7 +69,6 @@ public class RetraiteMB {
         this.contrat = contrat;
     }
 
-    
     public Produit getProduit() {
         return produit;
     }
@@ -88,47 +84,48 @@ public class RetraiteMB {
     public void setIdProduit(int idProduit) {
         this.idProduit = idProduit;
     }
+
     public void loadProduit() {
-        System.out.println("_________huhu"+idProduit);
+        System.out.println("_________huhu" + idProduit);
         this.produit = produitBean.findById(new Integer(idProduit));
-        System.out.println("azefaze"+produit.getId());
-        
+        System.out.println("azefaze" + produit.getId());
+
     }
-    
-     public String ajouterContratRetraite() {
+
+    public String ajouterContratRetraite() {
         FacesContext context = FacesContext.getCurrentInstance();
         Client c = (Client) context.getExternalContext().getSessionMap().get("clientSession");
         contrat.setDaty(new Date());
         contrat.setClient(c);
-        
+
         Util util = new Util();
         contrat.setNopolice(util.buildNoPolice());
         contrat.setRtOptionRetrait(rtOptionRetraitSelect);
         contrat.setRtPeriodiciteCotisation(rtperiodeSelect);
         contrat.setRtType(rtTypeSelect);
-        
-         SouscriptionProduit produitSous = new SouscriptionProduit();
-         produitSous.setClient(c);
-         //fixe retraite ID
-         produit.setId(2);
-         /*FIN*/
-         produitSous.setProduit(produit);
-         produitSous.setPrimenet(new Double(0));
-         produitSous.setPrimetotal(new Double(0));
-         produitSous.setDuree(BigInteger.valueOf(0));
-         produitSous.setReduction(new Double(0));
-         produitSous.setNopolice(util.buildNoPolice());
-         System.out.println("_______"+produit.getId());
-        retraiteBean.save(contrat,produitSous);
+
+        SouscriptionProduit produitSous = new SouscriptionProduit();
+        produitSous.setClient(c);
+        //fixe retraite ID
+        produit.setId(2);
+        /*FIN*/
+        produitSous.setProduit(produit);
+        produitSous.setPrimenet(new Double(0));
+        produitSous.setPrimetotal(new Double(0));
+        produitSous.setDuree(BigInteger.valueOf(0));
+        produitSous.setReduction(new Double(0));
+        produitSous.setNopolice(util.buildNoPolice());
+        System.out.println("_______" + produit.getId());
+        retraiteBean.save(contrat, produitSous);
 
         MessageUtil.addFlashInfoMessage("Contrat Ajouter");
         return "/JSF/Produit/retraite/contrat?faces-redirect=true";
     }
-     
-     private List<RtOptionRetrait> listeOptionRetrait;
+
+    private List<RtOptionRetrait> listeOptionRetrait;
     private RtOptionRetrait rtOptionRetraitSelect;
-    
-     private List<RtPeriodiciteCotisation> listertperiode;
+
+    private List<RtPeriodiciteCotisation> listertperiode;
     private RtPeriodiciteCotisation rtperiodeSelect;
 
     public RtTypeBean getRtTypeBean() {
@@ -148,8 +145,8 @@ public class RetraiteMB {
     }
 
     public List<RtPeriodiciteCotisation> getListertperiode() {
-        if(listertperiode==null){
-           listertperiode= rtPeriodiciteCotisationBean.findAll();
+        if (listertperiode == null) {
+            listertperiode = rtPeriodiciteCotisationBean.findAll();
         }
         return listertperiode;
     }
@@ -167,8 +164,8 @@ public class RetraiteMB {
     }
 
     public List<RtType> getListertType() {
-         if(listertType==null){
-           listertType= rtTypeBean.findAll();
+        if (listertType == null) {
+            listertType = rtTypeBean.findAll();
         }
         return listertType;
     }
@@ -200,8 +197,8 @@ public class RetraiteMB {
     public void setRtTypeConverter(Converter rtTypeConverter) {
         this.rtTypeConverter = rtTypeConverter;
     }
-    
-     private List<RtType> listertType;
+
+    private List<RtType> listertType;
     private RtType rtTypeSelect;
 
     public RtOptionRetraitBean getRtOptionRetraitBean() {
@@ -239,7 +236,6 @@ public class RetraiteMB {
         this.optionRetraitConverter = optionRetraitConverter;
     }
 
-    
     private Converter optionRetraitConverter = new Converter() {
         /**
          * Convertit une String en Magasin.
@@ -263,9 +259,7 @@ public class RetraiteMB {
         }
     };
 
-    
-    
-     private Converter rtperiodeConverter = new Converter() {
+    private Converter rtperiodeConverter = new Converter() {
         /**
          * Convertit une String en Magasin.
          *
@@ -287,7 +281,7 @@ public class RetraiteMB {
             return catTarifaire.getId() + "";
         }
     };
- private Converter rtTypeConverter = new Converter() {
+    private Converter rtTypeConverter = new Converter() {
         /**
          * Convertit une String en Magasin.
          *
@@ -309,5 +303,6 @@ public class RetraiteMB {
             return catTarifaire.getId() + "";
         }
     };
- 
+
+   
 }

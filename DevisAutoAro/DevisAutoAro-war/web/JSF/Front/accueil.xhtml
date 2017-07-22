@@ -6,13 +6,18 @@
         <title>Aro</title>
     </h:head>
     <h:body>
-        <h:link rendered="#{clientSession==null}" outcome="/JSF/Front/login.xhtml" value="Se connecter"/>
-        <h:link rendered="#{clientSession==null}" outcome="/JSF/Client/ajoutClient.xhtml" value="Inscription"/>
-        <h:outputText rendered="#{clientSession!=null}" value="Vous etes connecter en tant que :"/>
-        <h:outputText rendered="#{clientSession!=null}" value="#{clientSession.nom}"/>
-        <h:outputText rendered="#{clientSession!=null}" value="#{clientSession.prenom}"/>
-        <h:link outcome="/JSF/Produit/produits.xhtml" value="Nos Produits"/>
-        
+        <h:form>
+            <h:link rendered="#{clientSession==null}" outcome="/JSF/Front/login.xhtml" value="Se connecter"/><br></br>
+            <h:link rendered="#{clientSession==null}" outcome="/JSF/Client/ajoutClient.xhtml" value="Inscription"/>
+            <h:outputText rendered="#{clientSession!=null}" value="Vous etes connecter en tant que :"/>
+            <h:outputText rendered="#{clientSession!=null}" value="#{clientSession.nom}"/>
+            <h:outputText rendered="#{clientSession!=null}" value="#{clientSession.prenom}"/>
+            <br></br>
+            <h:link outcome="/JSF/Produit/produits.xhtml" value="Nos Produits"/>
+            <h:commandLink rendered="#{clientSession!=null}" action="#{profilMB.information()}" value="Mon Profil"/>
+            <h:link rendered="#{clientSession!=null}" outcome="/JSF/Client/contrat.xhtml" value="Mes Contrat"/>
+            
+        </h:form>
     </h:body>
 </html>
 

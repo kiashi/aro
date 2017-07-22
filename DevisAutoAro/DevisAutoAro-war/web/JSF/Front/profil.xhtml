@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Profil Client</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+               
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="Nom:" for="nom" />
+                    <h:outputText id="nom" value="#{profilMB.client.nom}" title="Nom" />
+                    <h:outputLabel value="Prenom:" for="prenom" />
+                    <h:outputText id="prenom" value="#{profilMB.client.prenom}" title="Prenom" />
+                    <h:outputLabel value="Adresse:" for="adresse" />
+                    <h:outputText id="adresse" value="#{profilMB.client.adresse}" title="Adresse" />
+                    <h:outputLabel value="Profession:" for="profession" />
+                    <h:outputText id="profession" value="#{profilMB.client.profession}" title="Profession" />
+                    <h:outputLabel value="DateNaissance:" for="dateNaissance" />
+                    <h:outputText id="dateNaissance" value="#{profilMB.client.dateNaissance}" title="DateNaissance" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputLabel value="LieuNaissance:" for="lieuNaissance" />
+                    <h:outputText id="lieuNaissance" value="#{profilMB.client.lieuNaissance}" title="LieuNaissance" />
+                    <h:outputLabel value="Cin:" for="cin" />
+                    <h:outputText id="cin" value="#{profilMB.client.cin}" title="Cin" />
+                    <h:outputLabel value="Tel:" for="tel" />
+                    <h:outputText id="tel" value="#{profilMB.client.tel}" title="Tel" />
+                    <h:outputLabel value="Email:" for="email" />
+                    <h:outputText id="email" value="#{profilMB.client.email}" title="Email" />
+                    
+                    <h:outputLabel value="Noclient:" for="noclient" />
+                    <h:outputText id="noclient" value="#{profilMB.client.noclient}" title="Noclient" />
+                    <h:outputLabel value="DateSouscription:" for="dateSouscription" />
+                    <h:outputText id="dateSouscription" value="#{profilMB.client.dateSouscription}" title="DateSouscription" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    
+                </h:panelGrid>
+                
+                
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
