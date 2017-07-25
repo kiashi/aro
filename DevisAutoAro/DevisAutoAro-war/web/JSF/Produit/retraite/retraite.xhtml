@@ -21,6 +21,18 @@
 
                 <h:panelGrid columns="2">
 
+                     <h:outputLabel value="Souscripteur" for="client" />
+
+                     <h:selectOneMenu class="form-control" id="Souscripteur" value="#{retraiteMB.souscripteur}"
+                                     converter="#{retraiteMB.clientConverter}">
+                        <f:selectItems value="#{retraiteMB.listeClient}" 
+                                       var="client"
+                                       itemValue="#{client}"
+                                       itemLabel="#{client.nom} #{client.prenom}"/>
+                    </h:selectOneMenu>
+
+                    
+                    
                     <h:outputLabel value="BeneficiaireCasDeces:" for="beneficiaireCasDeces" />
                     <h:inputText id="beneficiaireCasDeces" value="#{retraiteMB.contrat.beneficiaireCasDeces}" title="BeneficiaireCasDeces" />
 

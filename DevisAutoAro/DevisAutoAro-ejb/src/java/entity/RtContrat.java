@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "RtContrat.findAll", query = "SELECT r FROM RtContrat r")
     , @NamedQuery(name = "RtContrat.findById", query = "SELECT r FROM RtContrat r WHERE r.id = :id")
+    , @NamedQuery(name = "RtContrat.findBySouscripteurID", query = "SELECT r FROM RtContrat r WHERE r.souscriptionProduitId.id = :id")
     , @NamedQuery(name = "RtContrat.findByDaty", query = "SELECT r FROM RtContrat r WHERE r.daty = :daty")
     , @NamedQuery(name = "RtContrat.findByNopolice", query = "SELECT r FROM RtContrat r WHERE r.nopolice = :nopolice")
     , @NamedQuery(name = "RtContrat.findByBeneficiaireCasDeces", query = "SELECT r FROM RtContrat r WHERE r.beneficiaireCasDeces = :beneficiaireCasDeces")})

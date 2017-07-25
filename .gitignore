@@ -31,3 +31,8 @@ hs_err_pid*
 =======
 /DevisAutoAro/build/
 >>>>>>> db295b0ea7a5c0b88ffb46c6f51c61ebb6cb4930
+/DevisAutoAro/DevisAutoAro-ejb/build/
+/DevisAutoAro/DevisAutoAro-ejb/dist/
+/DevisAutoAro/DevisAutoAro-war/build/
+/DevisAutoAro/dist/
+/DevisAutoAro/DevisAutoAro-war/dist/

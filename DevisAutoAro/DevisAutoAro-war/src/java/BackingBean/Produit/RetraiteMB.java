@@ -5,6 +5,7 @@
  */
 package BackingBean.Produit;
 
+import EJB.ClientBean;
 import EJB.ProduitBean;
 import EJB.RetraiteBean;
 import EJB.RtOptionRetraitBean;
@@ -38,6 +39,9 @@ import util.Util;
 public class RetraiteMB {
 
     @EJB
+    private ClientBean clientBean;
+
+    @EJB
     private RtTypeBean rtTypeBean;
 
     @EJB
@@ -52,6 +56,7 @@ public class RetraiteMB {
     @EJB
     private ProduitBean produitBean;
 
+    
     /**
      * Creates a new instance of RetraiteMB
      */
@@ -91,13 +96,23 @@ public class RetraiteMB {
         System.out.println("azefaze" + produit.getId());
 
     }
+    
+    private Client souscripteur = new Client();
 
+    public Client getSouscripteur() {
+        return souscripteur;
+    }
+
+    public void setSouscripteur(Client souscripteur) {
+        this.souscripteur = souscripteur;
+    }
+    
     public String ajouterContratRetraite() {
         FacesContext context = FacesContext.getCurrentInstance();
         Client c = (Client) context.getExternalContext().getSessionMap().get("clientSession");
         contrat.setDaty(new Date());
         contrat.setClient(c);
-
+        
         Util util = new Util();
         contrat.setNopolice(util.buildNoPolice());
         contrat.setRtOptionRetrait(rtOptionRetraitSelect);
@@ -106,6 +121,7 @@ public class RetraiteMB {
 
         SouscriptionProduit produitSous = new SouscriptionProduit();
         produitSous.setClient(c);
+        produitSous.setClientSouscripteur(souscripteur);
         //fixe retraite ID
         produit.setId(2);
         /*FIN*/
@@ -119,7 +135,7 @@ public class RetraiteMB {
         retraiteBean.save(contrat, produitSous);
 
         MessageUtil.addFlashInfoMessage("Contrat Ajouter");
-        return "/JSF/Produit/retraite/contrat?faces-redirect=true";
+        return "/JSF/Client/contrat?faces-redirect=true";
     }
 
     private List<RtOptionRetrait> listeOptionRetrait;
@@ -128,6 +144,29 @@ public class RetraiteMB {
     private List<RtPeriodiciteCotisation> listertperiode;
     private RtPeriodiciteCotisation rtperiodeSelect;
 
+    private List<Client> listeClient;
+    private Client clientSelect;
+
+    public List<Client> getListeClient() {
+         if (listeClient == null) {
+            listeClient = clientBean.findAll();
+        }
+        return listeClient;
+    }
+
+    public void setListeClient(List<Client> listeClient) {
+        this.listeClient = listeClient;
+    }
+
+    public Client getClientSelect() {
+        return clientSelect;
+    }
+
+    public void setClientSelect(Client clientSelect) {
+        this.clientSelect = clientSelect;
+    }
+
+    
     public RtTypeBean getRtTypeBean() {
         return rtTypeBean;
     }
@@ -304,5 +343,36 @@ public class RetraiteMB {
         }
     };
 
-   
+    
+
+    public Converter getClientConverter() {
+        return clientConverter;
+    }
+
+    public void setClientConverter(Converter clientConverter) {
+        this.clientConverter = clientConverter;
+    }
+
+    private Converter clientConverter = new Converter() {
+        /**
+         * Convertit une String en Magasin.
+         *
+         * @param value valeur à convertir
+         */
+        @Override
+        public Object getAsObject(FacesContext context, UIComponent component, String value) {
+            return clientBean.findById(new Integer(value));
+        }
+
+        /**
+         * Convertit un Magasin en String.
+         *
+         * @param value valeur à convertir
+         */
+        @Override
+        public String getAsString(FacesContext context, UIComponent component, Object value) {
+            Client catTarifaire = (Client) value;
+            return catTarifaire.getId() + "";
+        }
+    };
 }

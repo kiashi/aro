@@ -52,11 +52,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Client.findByDateSouscription", query = "SELECT c FROM Client c WHERE c.dateSouscription = :dateSouscription")})
 public class Client implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clientId")
-    private List<Client> clientList;
-    @JoinColumn(name = "CLIENT_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Client clientId;
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -307,21 +303,6 @@ public class Client implements Serializable {
         return "entity.Client[ id=" + id + " ]";
     }
 
-    @XmlTransient
-    public List<Client> getClientList() {
-        return clientList;
-    }
-
-    public void setClientList(List<Client> clientList) {
-        this.clientList = clientList;
-    }
-
-    public Client getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Client clientId) {
-        this.clientId = clientId;
-    }
     
+
 }

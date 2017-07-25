@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "AmGaranti.findByCode", query = "SELECT a FROM AmGaranti a WHERE a.code = :code")})
 public class AmGaranti implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amGarantiId")
+    private List<AmGarantiVehicule> amGarantiVehiculeList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -115,6 +118,15 @@ public class AmGaranti implements Serializable {
     @Override
     public String toString() {
         return "entity.AmGaranti[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<AmGarantiVehicule> getAmGarantiVehiculeList() {
+        return amGarantiVehiculeList;
+    }
+
+    public void setAmGarantiVehiculeList(List<AmGarantiVehicule> amGarantiVehiculeList) {
+        this.amGarantiVehiculeList = amGarantiVehiculeList;
     }
     
 }

@@ -26,8 +26,10 @@ public class RetraiteBean {
     private EntityManager em;
 
     public void save(RtContrat contrat, SouscriptionProduit produit) {
+        SouscriptionProduit p =em.merge(produit);
+        contrat.setSouscriptionProduitId(p);
         em.persist(contrat);
-        em.persist(produit);
+        
     }
     
     public void depot(RtDepot depot) {
@@ -36,6 +38,13 @@ public class RetraiteBean {
     }
     public RtContrat findById(Integer id){
         Query cl = em.createNamedQuery("RtContrat.findById");
+        cl.setParameter("id", id);
+        System.out.println(""+id);
+        return (RtContrat) cl.getResultList().get(0);
+    }
+    
+     public RtContrat findBySouscriptionId(Integer id){
+        Query cl = em.createNamedQuery("RtContrat.findBySouscripteurID");
         cl.setParameter("id", id);
         System.out.println(""+id);
         return (RtContrat) cl.getResultList().get(0);

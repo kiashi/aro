@@ -47,6 +47,13 @@ import javax.xml.bind.annotation.XmlTransient;
 public class SouscriptionProduit implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "souscriptionProduitId")
+    private List<AmGarantiVehicule> amGarantiVehiculeList;
+
+    @JoinColumn(name = "CLIENT_SOUSCRIPTEUR", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Client clientSouscripteur;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "souscriptionProduitId")
     private List<RtContrat> rtContratList;
 
     private static final long serialVersionUID = 1L;
@@ -199,6 +206,23 @@ public class SouscriptionProduit implements Serializable {
 
     public void setRtContratList(List<RtContrat> rtContratList) {
         this.rtContratList = rtContratList;
+    }
+
+    public Client getClientSouscripteur() {
+        return clientSouscripteur;
+    }
+
+    public void setClientSouscripteur(Client clientSouscripteur) {
+        this.clientSouscripteur = clientSouscripteur;
+    }
+
+    @XmlTransient
+    public List<AmGarantiVehicule> getAmGarantiVehiculeList() {
+        return amGarantiVehiculeList;
+    }
+
+    public void setAmGarantiVehiculeList(List<AmGarantiVehicule> amGarantiVehiculeList) {
+        this.amGarantiVehiculeList = amGarantiVehiculeList;
     }
 
 }
