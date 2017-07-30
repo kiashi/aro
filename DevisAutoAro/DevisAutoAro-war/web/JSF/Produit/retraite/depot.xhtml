@@ -43,14 +43,18 @@
                             <h:outputText value="Daty"/>
                         </f:facet>
                         <h:outputText value="#{item.daty}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                     </h:column>
 
                 </h:dataTable>
                  <h:outputLabel value="TOTAL : "/>
                 <h:outputText value="#{depotRetraiteMB.total}"/>
+                
+                
+                <h:commandLink action="/JSF/Produit/retraite/rachat.xhtml"  value="Rachat"/>
             </h:form>
+            
             
             
         </f:view>

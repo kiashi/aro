@@ -5,7 +5,10 @@
  */
 package EJB;
 
+import entity.AmGarantiVehicule;
+import entity.AmVehicule;
 import entity.RtContrat;
+import entity.SouscriptionProduit;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
@@ -22,10 +25,13 @@ public class AutoMotoBean {
     @PersistenceContext(unitName = "DevisAutoAro-ejbPU")
     private EntityManager em;
 
-    public void save(RtContrat contrat) {
-        em.persist(contrat);
+    public void save(AmVehicule vehicule, AmGarantiVehicule garanti) {
+        SouscriptionProduit p =new SouscriptionProduit();
+        AmVehicule v=em.merge(vehicule);
+        AmGarantiVehicule garantiVehicule = em.merge(garanti);
+        
     }
-
+    
     
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

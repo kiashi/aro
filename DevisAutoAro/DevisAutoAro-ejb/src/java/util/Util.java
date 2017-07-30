@@ -12,6 +12,9 @@ public class Util {
     public String buildNoPolice(){
         return "RET001";
     }
+    public String buildNoPoliceAutoMoto(){
+        return "AM001";
+    }
     public String timeToString(Time time) throws Exception
     {
         try {

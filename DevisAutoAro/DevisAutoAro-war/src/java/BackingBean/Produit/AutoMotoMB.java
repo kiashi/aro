@@ -65,7 +65,7 @@ public class AutoMotoMB {
         RtContrat contrat = new RtContrat();
         contrat.setClient(c);
 
-        autoMotoBean.save(contrat);
+        //autoMotoBean.save(contrat);
 
         MessageUtil.addFlashInfoMessage("Ajouter");
         return "/JSF/Front/contrat?faces-redirect=true";
