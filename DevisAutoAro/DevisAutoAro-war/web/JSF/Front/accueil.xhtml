@@ -21,16 +21,16 @@
             <h:commandLink rendered="#{clientSession!=null}" action="#{profilMB.information()}" value="Mon Profil"/>
             <h:link rendered="#{clientSession!=null}" outcome="/JSF/Client/contrat.xhtml" value="Mes Contrat"/>
 
-            <p:panel header="Localisation">
+            
                 <h:form>
                     <p:growl id="growl" showDetail="true" />
-                    <p:gmap center="-18.909020,47.523020" zoom="13" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
+                    <p:gmap center="-18.908639,47.522231" zoom="5" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
                         <p:ajax event="overlaySelect" listener="#{markersView.onMarkerSelect}" update="growl" />
                     </p:gmap>
 
                 </h:form>
 
-            </p:panel>
+           
 
             <br></br>
             <p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Localisation Aro Siege" onclick="PF('dlg').show();" />
@@ -38,7 +38,7 @@
             <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
                 <h:form>
                     <p:growl id="growl" showDetail="true" />
-                    <p:gmap center="-18.909020,47.523020" zoom="13" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
+                    <p:gmap center="-18.908639,47.522231" zoom="17" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
                         <p:ajax event="overlaySelect" listener="#{markersView.onMarkerSelect}" update="growl" />
                     </p:gmap>
 

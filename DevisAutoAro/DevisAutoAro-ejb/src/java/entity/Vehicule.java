@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.util.Date;
+
 /**
  *
  * @author kiashi
@@ -15,8 +17,63 @@ public class Vehicule {
     private Integer puissanceFiscale;
     private String sourceEnergie;
     private Double poidsVide;
+    private String carrosserie;
+
+    public String getCarrosserie() {
+        return carrosserie;
+    }
+
+    public void setCarrosserie(String carrosserie) {
+        this.carrosserie = carrosserie;
+    }
+
+    public String getNoImm() {
+        return noImm;
+    }
+
+    public void setNoImm(String noImm) {
+        this.noImm = noImm;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNoSerie() {
+        return noSerie;
+    }
+
+    public void setNoSerie(String noSerie) {
+        this.noSerie = noSerie;
+    }
+
+    public Date getDateCirculation() {
+        return dateCirculation;
+    }
+
+    public void setDateCirculation(Date dateCirculation) {
+        this.dateCirculation = dateCirculation;
+    }
     private Integer nbPlace;
     private Integer nbRoues;
+    private String noImm;
+    private String marque;
+    private String type;
+    private String noSerie;
+    private Date dateCirculation;
+   
 
     public Integer getNbRoues() {
         return nbRoues;

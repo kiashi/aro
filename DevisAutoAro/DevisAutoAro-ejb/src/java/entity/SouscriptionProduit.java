@@ -6,7 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -71,7 +71,7 @@ public class SouscriptionProduit implements Serializable {
     @Column(name = "PRIMETOTAL")
     private Double primetotal;
     @Column(name = "DUREE")
-    private BigInteger duree;
+    private Integer duree;
     @Column(name = "REDUCTION")
     private Double reduction;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "souscriptionProduit")
@@ -82,9 +82,19 @@ public class SouscriptionProduit implements Serializable {
     @JoinColumn(name = "PRODUIT_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Produit produit;
-    @Size(max = 6)
+    @Size(max = 8)
     @Column(name = "NOPOLICE")
     private String nopolice;
+    @Column(name = "VALIDE")
+    private Integer valide;
+
+    public Integer getValide() {
+        return valide;
+    }
+
+    public void setValide(Integer valide) {
+        this.valide = valide;
+    }
 
     public SouscriptionProduit() {
     }
@@ -125,11 +135,11 @@ public class SouscriptionProduit implements Serializable {
         this.primetotal = primetotal;
     }
 
-    public BigInteger getDuree() {
+    public Integer getDuree() {
         return duree;
     }
 
-    public void setDuree(BigInteger duree) {
+    public void setDuree(Integer duree) {
         this.duree = duree;
     }
 

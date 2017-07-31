@@ -47,7 +47,7 @@ public class Util {
     }
 
     //myLengt : 4 , mot : 34, pref : 0 => 0034
-    public String addPrefix(Integer myLength, String mot, String pref) {
+    public static String addPrefix(Integer myLength, String mot, String pref) {
         String res = mot;
         for (int i = 0; i < myLength - mot.length(); i++) {
             res = pref + "" + res;

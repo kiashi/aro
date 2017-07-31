@@ -77,7 +77,17 @@ public class RtContrat implements Serializable {
     @JoinColumn(name = "RT_TYPE_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private RtType rtType;
+     @Column(name = "AGERETRAITE")
+    private Integer ageretraite;
 
+    public Integer getAgeretraite() {
+        return ageretraite;
+    }
+
+    public void setAgeretraite(Integer ageretraite) {
+        this.ageretraite = ageretraite;
+    }
+    
     public RtContrat() {
     }
 

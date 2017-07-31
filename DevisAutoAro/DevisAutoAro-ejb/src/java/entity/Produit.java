@@ -54,6 +54,16 @@ public class Produit implements Serializable {
     private String nompage;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produit")
     private List<SouscriptionProduit> souscriptionProduitList;
+    @Column(name = "CODE")
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getNompage() {
         return nompage;

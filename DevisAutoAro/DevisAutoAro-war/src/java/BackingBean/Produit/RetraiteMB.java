@@ -128,7 +128,7 @@ public class RetraiteMB {
         produitSous.setProduit(produit);
         produitSous.setPrimenet(new Double(0));
         produitSous.setPrimetotal(new Double(0));
-        produitSous.setDuree(BigInteger.valueOf(0));
+        produitSous.setDuree(Integer.valueOf(0));
         produitSous.setReduction(new Double(0));
         produitSous.setNopolice(util.buildNoPolice());
         System.out.println("_______" + produit.getId());

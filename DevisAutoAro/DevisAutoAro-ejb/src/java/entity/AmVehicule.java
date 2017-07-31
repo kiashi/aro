@@ -6,7 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -77,11 +77,11 @@ public class AmVehicule implements Serializable {
     @Column(name = "NOSERIE")
     private String noserie;
     @Column(name = "DATE_MISE_EN_CIRC")
-    @Temporal(TemporalType.TIMESTAMP)
+    
     private Date dateMiseEnCirc;
     @Column(name = "PUISSANCE_FISC")
-    private BigInteger puissanceFisc;
-    @Size(max = 5)
+    private Integer puissanceFisc;
+    @Size(max = 10)
     @Column(name = "SOURCE_ENERGIE")
     private String sourceEnergie;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -90,20 +90,30 @@ public class AmVehicule implements Serializable {
     @Column(name = "POIDS_CHARGE")
     private Double poidsCharge;
     @Column(name = "NB_PLACE")
-    private BigInteger nbPlace;
+    private Integer nbPlace;
     @Column(name = "REMORQUE")
-    private BigInteger remorque;
+    private Integer remorque;
     @Column(name = "DEBUT_VISITE_TECH")
-    @Temporal(TemporalType.TIMESTAMP)
+    
     private Date debutVisiteTech;
     @Column(name = "FIN_VISITE_TECH")
-    @Temporal(TemporalType.TIMESTAMP)
+   
     private Date finVisiteTech;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "amVehicule")
     private List<AmSinistre> amSinistreList;
     @JoinColumn(name = "SOUSCRIPTION_PRODUIT_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private SouscriptionProduit souscriptionProduit;
+    @Column(name = "NBROUES")
+    private Integer nbroues;
+
+    public Integer getNbroues() {
+        return nbroues;
+    }
+
+    public void setNbroues(Integer nbroues) {
+        this.nbroues = nbroues;
+    }
 
     public AmVehicule() {
     }
@@ -168,11 +178,11 @@ public class AmVehicule implements Serializable {
         this.dateMiseEnCirc = dateMiseEnCirc;
     }
 
-    public BigInteger getPuissanceFisc() {
+    public Integer getPuissanceFisc() {
         return puissanceFisc;
     }
 
-    public void setPuissanceFisc(BigInteger puissanceFisc) {
+    public void setPuissanceFisc(Integer puissanceFisc) {
         this.puissanceFisc = puissanceFisc;
     }
 
@@ -200,19 +210,19 @@ public class AmVehicule implements Serializable {
         this.poidsCharge = poidsCharge;
     }
 
-    public BigInteger getNbPlace() {
+    public Integer getNbPlace() {
         return nbPlace;
     }
 
-    public void setNbPlace(BigInteger nbPlace) {
+    public void setNbPlace(Integer nbPlace) {
         this.nbPlace = nbPlace;
     }
 
-    public BigInteger getRemorque() {
+    public Integer getRemorque() {
         return remorque;
     }
 
-    public void setRemorque(BigInteger remorque) {
+    public void setRemorque(Integer remorque) {
         this.remorque = remorque;
     }
 
