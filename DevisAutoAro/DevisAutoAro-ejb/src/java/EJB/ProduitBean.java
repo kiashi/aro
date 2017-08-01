@@ -6,6 +6,7 @@
 package EJB;
 
 import entity.Produit;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -31,6 +32,21 @@ public class ProduitBean {
     public List<Produit> getAll(){
         Query query = em.createQuery("SELECT c FROM Produit c");
         return (List<Produit>)query.getResultList();
+    }
+    
+    /**
+     * faux get all
+     * @return 
+     */
+    public List<Produit> getAllFopla(){
+        List<Produit> res = new ArrayList<Produit>();
+        for(int i= 0; i<10; i++){
+            Produit p = new Produit();
+            p.setId(i);
+            p.setIntitule("produit "+i);
+            res.add(p);
+        }
+        return res;
     }
     
     public Produit findById(Integer id){

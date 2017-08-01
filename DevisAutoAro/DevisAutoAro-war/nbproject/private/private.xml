@@ -3,29 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Front/login.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Client/contrat.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Produit/auto-moto/depot.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Produit/retraite/rachat.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Produit/auto-moto/DevisAuto.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Produit/produits.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/Client/MarkersView.java</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/Produit/ProduitMB.java</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Client/ajoutClient.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/WEB-INF/template-front/header.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/Produit/DevisAutoMotoMB.java</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/Produit/AutoMotoMB.java</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Front/profil.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/WEB-INF/template-front/template.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/Client/ClientMB.java</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/Produit/DepotRetraiteMB.java</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/Produit/RetraiteMB.java</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Front/accueil.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Produit/retraite/depot.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/welcomePrimefaces.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Produit/auto-moto/auto-moto.xhtml</file>
-            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/Produit/retraite/retraite.xhtml</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/src/java/BackingBean/bot/BotMB.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-war/web/JSF/bot/bot.xhtml</file>
         </group>
     </open-files>
 </project-private>
