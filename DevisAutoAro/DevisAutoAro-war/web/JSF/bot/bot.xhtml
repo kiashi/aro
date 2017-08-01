@@ -21,12 +21,17 @@
         <f:view>
             <h:form>
                 <div class="chat">
-                    
+
                     <ui:repeat value="#{botMB.discussion}" var="mes">
-                        <h:outputText value="#{mes.content}"/>
-                        <ui:repeat value="#{mes.boutons}" var="bouton">
-                            <h:commandButton label="#{bouton}"/>
-                        </ui:repeat>
+                        <p>
+                            <h:outputText value="#{mes.content}"/>
+                            <p>
+                                <ui:repeat value="#{mes.boutons}" var="bouton">
+                                    <h:commandButton value="#{bouton.label}" action="#{bouton.action}"/>
+                                </ui:repeat>
+                            </p>
+                        </p>
+                        <hr></hr>
                     </ui:repeat>
                 </div>
                 <h:inputText  value="#{botMB.textUser}"/>

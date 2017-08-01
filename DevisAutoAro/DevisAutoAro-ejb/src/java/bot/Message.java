@@ -15,8 +15,8 @@ public class Message {
     private int user;
     private String content;
     private String page;
-    private List<String> boutons;
-    private List<String> actions;
+    private List<Bouton> boutons;
+    
 
     public Message() {}
     
@@ -48,22 +48,12 @@ public class Message {
         this.page = page;
     }
 
-    public List<String> getBoutons() {
+    public List<Bouton> getBoutons() {
         return boutons;
     }
 
-    public void setBoutons(List<String> boutons) {
+    public void setBoutons(List<Bouton> boutons) {
         this.boutons = boutons;
     }
 
-    public List<String> getActions() {
-        return actions;
-    }
-
-    public void setActions(List<String> actions) {
-        this.actions = actions;
-    }
-    
-    
-    
 }

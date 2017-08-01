@@ -29,12 +29,13 @@ public class Actions {
         List<Message> messages = new ArrayList<Message>();
         for (Produit p : produits) {
             Message m = new Message(0, p.getIntitule());
-            List<String> boutons = new ArrayList<String>();
-            boutons.add("Info");
-            boutons.add("Souscrire");
-            List<String> actions = new ArrayList<String>();
-            actions.add("info");
-            actions.add("souscrire");
+            List<Bouton> boutons = new ArrayList<Bouton>();
+            boutons.add(new Bouton("Info", "actioninfo"));
+            boutons.add(new Bouton("Souscrire", "souscrireaction"));
+
+            m.setBoutons(boutons);
+
+            messages.add(m);
         }
         return messages;
     }
@@ -46,13 +47,9 @@ public class Actions {
         for (Produit p : produits) {
             if (idProduit.equals(p.getId())) {
                 Message m = new Message(0, p.getIntitule());
-                List<String> boutons = new ArrayList<String>();
-                boutons.add("Info");
-                boutons.add("Souscrire");
-                List<String> actions = new ArrayList<String>();
-                actions.add("info");
-                actions.add("souscrire");
-                m.setActions(actions);
+                List<Bouton> boutons = new ArrayList<Bouton>();
+                boutons.add(new Bouton("Info", "actioninfo"));
+                boutons.add(new Bouton("Souscrire", "souscrireaction"));
                 m.setBoutons(boutons);
                 res.add(m);
                 return res;

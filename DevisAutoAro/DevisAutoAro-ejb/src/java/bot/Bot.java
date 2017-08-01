@@ -61,17 +61,14 @@ public class Bot {
             JSONObject jobject = jsonarray.getJSONObject(i);
             Message m = new Message(jobject.getInt("user"), jobject.getString("content"));
             JSONArray jsonBoutons = jobject.getJSONArray("boutons");
-            JSONArray jsonActions = jobject.getJSONArray("actions");
-            List<String> boutons = new ArrayList<String>();
-            List<String> actions = new ArrayList<String>();
+            List<Bouton> boutons = new ArrayList<Bouton>();
+            
             for (int j = 0; j < jsonBoutons.length(); j++) {
                 JSONObject jsonobjectb = jsonBoutons.getJSONObject(j);
-                JSONObject jsonobjecta = jsonActions.getJSONObject(j);
-                boutons.add(jsonobjectb.getString("label"));
-                actions.add(jsonobjecta.getString("action"));
+                boutons.add(new Bouton(jsonobjectb.getString("label"), jsonobjectb.getString("action")));
+                
             }
             m.setBoutons(boutons);
-            m.setActions(actions);
             messages.add(m);
         }
         return messages;

@@ -6,6 +6,7 @@
 package BackingBean.bot;
 
 import bot.Bot;
+import bot.Bouton;
 import bot.Message;
 import bot.Chat;
 import java.util.ArrayList;
@@ -42,8 +43,8 @@ public class BotMB {
             List<Message> newMessages = bot.executeAction(chatAction);
             Message mesUser = new Message(1, textUser);
             mesUser.setContent(textUser);
-            mesUser.setBoutons(new ArrayList<String>());
-            mesUser.setActions(new ArrayList<String>());
+            mesUser.setBoutons(new ArrayList<Bouton>());
+            
             
             discussion.add(mesUser);
             for(Message m : newMessages){
