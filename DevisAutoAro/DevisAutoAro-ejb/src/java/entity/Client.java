@@ -91,6 +91,17 @@ public class Client implements Serializable {
     @Size(max = 30)
     @Column(name = "MDP")
     private String mdp;
+    @Size(max = 3000)
+    @Column(name = "SIGNATURE")
+    private String signature;
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
 //    @Size(max = 6)
 //    @Column(name = "NOPOLICE")
 //    private String nopolice;
