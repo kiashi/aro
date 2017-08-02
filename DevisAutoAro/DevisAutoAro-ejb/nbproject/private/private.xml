@@ -8,6 +8,7 @@
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/RtType.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/AmCategorietarifaireBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/PhotoSinistre.java</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/CompteClientBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/AmSinistre.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/RtDepot.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/conf/persistence.xml</file>
@@ -23,6 +24,7 @@
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/AmVehicule.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/RtOptionRetrait.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/RtDepotBean.java</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/AmContratBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/Produit.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/RtPeriodiciteCotisationBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/AmTauxgaranti.java</file>
@@ -31,12 +33,15 @@
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/ClTypeBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/RtTypeBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/SouscriptionProduit.java</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/Compteclient.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/RtOptionRetraitBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/RtPeriodiciteCotisation.java</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/Historiquepaiement.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/Client.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/AutoMotoBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/DevisAutoBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/ProfilBean.java</file>
+            <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/AmGarantiBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/EJB/ClientBean.java</file>
             <file>file:/C:/Users/mia74/Documents/GitHub/aro/DevisAutoAro/DevisAutoAro-ejb/src/java/entity/SaisieGaranti.java</file>
         </group>

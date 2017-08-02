@@ -5,6 +5,8 @@
  */
 package BackingBean.Client;
 
+
+
 import EJB.ClTypeBean;
 import EJB.ClientBean;
 import entity.Agence;
@@ -23,6 +25,8 @@ import util.MessageUtil;
  *
  * @author kiashi
  */
+
+
 @Named(value = "clientMB")
 @RequestScoped
 public class ClientMB {
@@ -32,12 +36,18 @@ public class ClientMB {
 
     @EJB
     private ClientBean clientBean;
-    
-    
 
-    
+    private String signature;
+
+    public String getValue() {
+        return signature;
+    }
+
+    public void setValue(String value) {
+        this.signature = value;
+    }
+
     private Client client = new Client();
-    
 
     public Client getClient() {
         return client;
@@ -49,40 +59,38 @@ public class ClientMB {
 
     public String connectClient() {
         Client cli = clientBean.findClient(client.getEmail(), client.getMdp());
-        
+
         if (cli != null) {
-            System.out.println("____"+client.getEmail() +client.getMdp());
+            System.out.println("____" + client.getEmail() + client.getMdp());
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getSessionMap().put("clientSession", cli);
-            Client a= (Client)context.getExternalContext().getSessionMap().get("clientSession");
-           
-            System.out.println("______"+a.getEmail() +a.getMdp());
+            Client a = (Client) context.getExternalContext().getSessionMap().get("clientSession");
+
+            System.out.println("______" + a.getEmail() + a.getMdp());
             return "/JSF/Front/accueil?faces-redirect=true";
-            
+
         } else {
             return "/JSF/Front/accueil?faces-redirect=true";
         }
     }
 
-    
-    
     /**
      * Creates a new instance of ClientMB
      */
     public ClientMB() {
     }
-    
+
     public String ajouterClient() {
-        System.out.println("___________"+client);
+        System.out.println("___________" + client);
         Agence agence = new Agence();
-        
+
         //fixe type client
         ClType type = new ClType();
         type.setId(1);
         //fin
-        
+
         agence.setId(1);
-       
+
         client.setClType(type);
         client.setAgence(agence);
         clientBean.save(client);
@@ -102,7 +110,7 @@ public class ClientMB {
     private ClType cltypeSelect;
 
     public ClType getCltypeSelect() {
-        if(listeTypeClient == null){
+        if (listeTypeClient == null) {
             listeTypeClient = clTypeBean.findAll();
         }
         return cltypeSelect;

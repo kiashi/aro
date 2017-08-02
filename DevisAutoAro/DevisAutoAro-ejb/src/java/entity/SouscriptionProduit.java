@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 
+
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -46,6 +47,13 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "SouscriptionProduit.findByReduction", query = "SELECT s FROM SouscriptionProduit s WHERE s.reduction = :reduction")})
 public class SouscriptionProduit implements Serializable {
 
+    @Column(name = "DUREE")
+    private Integer duree;
+    @Column(name = "VALIDE")
+    private Integer valide;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "souscriptionProduitId")
+    private List<Historiquepaiement> historiquepaiementList;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "souscriptionProduitId")
     private List<AmGarantiVehicule> amGarantiVehiculeList;
 
@@ -70,8 +78,6 @@ public class SouscriptionProduit implements Serializable {
     private Double primenet;
     @Column(name = "PRIMETOTAL")
     private Double primetotal;
-    @Column(name = "DUREE")
-    private Integer duree;
     @Column(name = "REDUCTION")
     private Double reduction;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "souscriptionProduit")
@@ -85,16 +91,6 @@ public class SouscriptionProduit implements Serializable {
     @Size(max = 8)
     @Column(name = "NOPOLICE")
     private String nopolice;
-    @Column(name = "VALIDE")
-    private Integer valide;
-
-    public Integer getValide() {
-        return valide;
-    }
-
-    public void setValide(Integer valide) {
-        this.valide = valide;
-    }
 
     public SouscriptionProduit() {
     }
@@ -135,13 +131,6 @@ public class SouscriptionProduit implements Serializable {
         this.primetotal = primetotal;
     }
 
-    public Integer getDuree() {
-        return duree;
-    }
-
-    public void setDuree(Integer duree) {
-        this.duree = duree;
-    }
 
     public Double getReduction() {
         return reduction;
@@ -233,6 +222,31 @@ public class SouscriptionProduit implements Serializable {
 
     public void setAmGarantiVehiculeList(List<AmGarantiVehicule> amGarantiVehiculeList) {
         this.amGarantiVehiculeList = amGarantiVehiculeList;
+    }
+
+    public Integer getDuree() {
+        return duree;
+    }
+
+    public void setDuree(Integer duree) {
+        this.duree = duree;
+    }
+
+    public Integer getValide() {
+        return valide;
+    }
+
+    public void setValide(Integer valide) {
+        this.valide = valide;
+    }
+
+    @XmlTransient
+    public List<Historiquepaiement> getHistoriquepaiementList() {
+        return historiquepaiementList;
+    }
+
+    public void setHistoriquepaiementList(List<Historiquepaiement> historiquepaiementList) {
+        this.historiquepaiementList = historiquepaiementList;
     }
 
 }

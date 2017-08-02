@@ -27,6 +27,15 @@ public class ProfilMB {
 
     private Client client = new Client();
     private List<SouscriptionProduit> listeContrat;
+    SouscriptionProduit souscription = new SouscriptionProduit();
+
+    public SouscriptionProduit getSouscription() {
+        return souscription;
+    }
+
+    public void setSouscription(SouscriptionProduit souscription) {
+        this.souscription = souscription;
+    }
 
     public List<SouscriptionProduit> getListeContrat() {
         if (listeContrat == null) {

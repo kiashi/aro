@@ -22,6 +22,12 @@
                 <h:panelGrid columns="2">
 
                     <h:inputText id="valeur" value="#{depotRetraiteMB.depot.valeur}" title="Valeur" />
+                    <br></br>
+                    <h:outputLabel value="Votre Numero de compte :" for="nocompte" />
+                    <h:inputText value="#{depotRetraiteMB.nocompte}" title="nocompte"/>
+                    
+                    <h:outputLabel value="Votre Mot de Passe :" for="mdp" />
+                    <h:inputText value="#{depotRetraiteMB.mdp}" title="mdp"/>
 
                 </h:panelGrid>
 
@@ -48,15 +54,15 @@
                     </h:column>
 
                 </h:dataTable>
-                 <h:outputLabel value="TOTAL : "/>
+                <h:outputLabel value="TOTAL : "/>
                 <h:outputText value="#{depotRetraiteMB.total}"/>
-                
-                
+
+
                 <h:commandLink action="/JSF/Produit/retraite/rachat.xhtml"  value="Rachat"/>
             </h:form>
-            
-            
-            
+
+
+
         </f:view>
 
     </h:body>
