@@ -7,39 +7,95 @@
     <h:head>
         <title>Bot</title>
         <style>
-            .produit {
-                background : blue;
-                float : left;
-                margin-left : 10px;
+            /*.user0 {
+                background : #00a7d0;
+                display : block;
+                padding : 10px;
+                border-radius: 10px;
+                color : white;
+                margin-bottom: 10px;
             }
-            .produits {
-                background : grey;
+            .user1 {
+                background : #ccc;
+                display : block;
+                padding : 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
             }
+            .div-button{
+                display : block;
+            }*/
+            ul{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            ul li{
+                display:inline-block;
+                clear: both;
+                padding: 10px;
+                border-radius: 30px;
+                margin-bottom: 2px;
+                font-family: Helvetica, Arial, sans-serif;
+            }
+
+            .him{
+                background: #eee;
+                float: left;
+            }
+
+            .me{
+                float: right;
+                background: #0084ff;
+                color: #fff;
+            }
+
+            .him + .me{
+                border-bottom-right-radius: 5px;
+            }
+
+            .me + .me{
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+
+            .me:last-of-type {
+                border-bottom-right-radius: 30px;
+            }
+
         </style>
+        <h:outputStylesheet name="css/bootstrap.min.css" />
+
+        <h:outputScript name="js/bootstrap.min.js" />
     </h:head>
     <h:body>
         <f:view>
             <h:form>
                 <div class="chat">
+                    <ul>
+                        <ui:repeat value="#{botMB.discussion}" var="mes">
+                            <li class="#{mes.classStyle}">
+                                <h:outputText value="#{mes.content}"/>
+                                <div class="div-button">
+                                    <ui:repeat value="#{mes.boutons}" var="bouton">
+                                        <h:commandButton class="btn btn-primary" value="#{bouton.label}" action="#{botMB.sendFromButton(bouton.action)}">
 
-                    <ui:repeat value="#{botMB.discussion}" var="mes">
-                        <p>
-                            <h:outputText value="#{mes.content}"/>
-                            <p>
-                                <ui:repeat value="#{mes.boutons}" var="bouton">
-                                    <h:commandButton value="#{bouton.label}" action="#{bouton.action}"/>
-                                </ui:repeat>
-                            </p>
-                        </p>
-                        <hr></hr>
-                    </ui:repeat>
+                                        </h:commandButton>
+                                    </ui:repeat>
+                                </div>
+                            </li>
+                        </ui:repeat>
+                    </ul>
                 </div>
-                <h:inputText  value="#{botMB.textUser}"/>
-                <h:commandButton action="#{botMB.send()}" label="send">
+                <h:inputText class="form-control" value="#{botMB.textUser}"/>
+                <h:commandButton class="btn btn-primary" action="#{botMB.send()}" value="send">
                     <f:ajax execute="@form" render="@form" />
                 </h:commandButton>
             </h:form>
         </f:view>
+
+
     </h:body>
 </html>
 

@@ -59,6 +59,4 @@ public class Chat extends BaseModele{
     public void setTypesparams(String typesparams) {
         this.typesparams = typesparams;
     }
-    
-   
 }

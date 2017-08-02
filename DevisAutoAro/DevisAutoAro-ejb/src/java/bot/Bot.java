@@ -38,9 +38,13 @@ public class Bot {
             Method method = act.getClass().getMethod(chat.getAction(), null);
             return (List<Message>) method.invoke(act, null);
         }
-        if (chat.getTypesparams().compareToIgnoreCase("java.lang.Integer") == 0) {
+        else if (chat.getTypesparams().compareToIgnoreCase("java.lang.Integer") == 0) {
             Method method = act.getClass().getMethod(chat.getAction(), java.lang.Integer.class);
             return (List<Message>) method.invoke(act, new Integer(chat.getParam()));
+        }
+        else if (chat.getTypesparams().compareToIgnoreCase("java.lang.String") == 0) {
+            Method method = act.getClass().getMethod(chat.getAction(), java.lang.String.class);
+            return (List<Message>) method.invoke(act, chat.getParam().toString());
         }
         return null;
     }

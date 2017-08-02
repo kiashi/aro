@@ -12,18 +12,34 @@ import java.util.List;
  * @author LENOVO
  */
 public class Message {
+
     private int user;
     private String content;
     private String page;
     private List<Bouton> boutons;
-    
+    private String classStyle;
 
-    public Message() {}
-    
+    public Message() {
+    }
+
     public Message(int user, String content) {
         this.content = content;
+        this.user = user;
     }
-    
+
+    public String getClassStyle() {
+        if (user == 1) {
+            classStyle = "me";
+        } else {
+            classStyle = "him";
+        }
+        return classStyle;
+    }
+
+    public void setClassStyle(String classStyle) {
+        this.classStyle = classStyle;
+    }
+
     public String getContent() {
         return content;
     }

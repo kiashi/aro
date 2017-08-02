@@ -30,7 +30,7 @@ public class Actions {
         for (Produit p : produits) {
             Message m = new Message(0, p.getIntitule());
             List<Bouton> boutons = new ArrayList<Bouton>();
-            boutons.add(new Bouton("Info", "actioninfo"));
+            boutons.add(new Bouton("Info", "infoProduit-"+p.getId()+"-java.lang.Integer"));
             boutons.add(new Bouton("Souscrire", "souscrireaction"));
 
             m.setBoutons(boutons);
@@ -48,8 +48,25 @@ public class Actions {
             if (idProduit.equals(p.getId())) {
                 Message m = new Message(0, p.getIntitule());
                 List<Bouton> boutons = new ArrayList<Bouton>();
-                boutons.add(new Bouton("Info", "actioninfo"));
+                boutons.add(new Bouton("Info", "infoProduit-"+idProduit+"-java.lang.Integer"));
+                // action à remplacer
                 boutons.add(new Bouton("Souscrire", "souscrireaction"));
+                m.setBoutons(boutons);
+                res.add(m);
+                return res;
+            }
+        }
+        return res;
+    }
+    
+    public List<Message> infoProduit(Integer idProduit){
+        // à remplacer getAllFopla
+        List<Produit> produits = produitBean.getAllFopla();
+        List<Message> res = new ArrayList<Message>();
+        for (Produit p : produits) {
+            if (idProduit.equals(p.getId())) {
+                Message m = new Message(0, p.getIntitule());
+                List<Bouton> boutons = new ArrayList<Bouton>();
                 m.setBoutons(boutons);
                 res.add(m);
                 return res;

@@ -5,22 +5,24 @@
  */
 package BackingBean.bot;
 
+import bot.Actions;
 import bot.Bot;
 import bot.Bouton;
 import bot.Message;
 import bot.Chat;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author LENOVO
  */
 @Named(value = "botMB")
-@RequestScoped
-public class BotMB {
+@SessionScoped
+public class BotMB implements Serializable {
 
     private String textUser;
 
@@ -42,12 +44,9 @@ public class BotMB {
             // le contenu à afficher
             List<Message> newMessages = bot.executeAction(chatAction);
             Message mesUser = new Message(1, textUser);
-            mesUser.setContent(textUser);
             mesUser.setBoutons(new ArrayList<Bouton>());
-            
-            
             discussion.add(mesUser);
-            for(Message m : newMessages){
+            for (Message m : newMessages) {
                 discussion.add(m);
             }
 
@@ -58,19 +57,54 @@ public class BotMB {
         }
     }
 
-    public void sendFromButton(String request, String param) {
+    public void sendFromButton(String actionString) {
+        System.out.println("huhu123");
         Bot bot = new Bot();
         try {
-            System.out.println("okkkkkkkkkkkk");
+            String[] actionParam = actionString.split("-");
             discussion = bot.getDiscussion();
             // chat : motcle, action, params
-//            Chat chatAction = bot.getActionFromText(request);
+            Chat chatAction = new Chat();
+            chatAction.setAction(actionParam[0]);
+            if (actionParam.length > 1) {
+                chatAction.setParam(actionParam[1]);
+                chatAction.setTypesparams(actionParam[2]);
+            } else {
+                chatAction.setTypesparams("null");
+                chatAction.setParam("null");
+            }
 
             // le contenu à afficher
-//            content = bot.executeAction(chatAction);
+            List<Message> newMessages = bot.executeAction(chatAction);
+            Message mesUser = new Message(1, textUser);
+            mesUser.setBoutons(new ArrayList<Bouton>());
 
-            discussion.add(new Message(1, request));
-            discussion.add(new Message(0, param));
+            discussion.add(mesUser);
+            for (Message m : newMessages) {
+                discussion.add(m);
+            }
+
+            bot.updateDiscussion(discussion);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void sendInfoProduit(String request, String param) {
+        Bot bot = new Bot();
+        Actions actions = new Actions();
+        try {
+            discussion = bot.getDiscussion();
+            // le contenu à afficher
+            List<Message> newMessages = actions.infoProduit(new Integer(param));
+            Message mesUser = new Message(1, request);
+            mesUser.setContent(request);
+            mesUser.setBoutons(new ArrayList<Bouton>());
+
+            discussion.add(mesUser);
+            for (Message m : newMessages) {
+                discussion.add(m);
+            }
 
             bot.updateDiscussion(discussion);
         } catch (Exception ex) {
@@ -87,6 +121,15 @@ public class BotMB {
     }
 
     public List<Message> getDiscussion() {
+        if (discussion == null) {
+            Bot bot = new Bot();
+            try {
+                discussion = bot.getDiscussion();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        }
         return discussion;
     }
 
