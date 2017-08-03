@@ -14,13 +14,14 @@
 
                 <f:view>
                     <h:form>
-                        <ui:repeat value="#{produitMB.listeProduit}" var ="item">
-                            <div class="android-more-section">
-                                <div class="android-section-title mdl-typography--display-1-color-contrast">Listes Poduits avec description</div>
+                        <div class="android-more-section">
+                            <div class="android-section-title mdl-typography--display-1-color-contrast">Listes Poduits avec description</div>
+                            <ui:repeat value="#{produitMB.listeProduit}" var ="item">
+
                                 <div class="android-card-container mdl-grid">
                                     <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
                                         <div class="mdl-card__media">
-                                            
+
                                             <h:graphicImage value="resources/img/more-from-1.png" />
                                         </div>
                                         <div class="mdl-card__title">
@@ -39,8 +40,9 @@
                                             </h:link>
                                         </div>
                                     </div>
-                                </div></div>
-                        </ui:repeat>
+                                </div>
+                            </ui:repeat>
+                        </div>
 
 
                     </h:form>
