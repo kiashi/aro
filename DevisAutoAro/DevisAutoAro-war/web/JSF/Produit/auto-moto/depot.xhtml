@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <f:metadata>  
         <f:viewParam name="idContrat" value="#{amContrat.idContrat}"  
                      required="true"/>  
@@ -12,28 +13,28 @@
         <title>Auto-Moto Contrat</title>
     </h:head>
     <h:body>
-        
+
         <f:view>
 
 
-            <h:form>
+            <h:form >
                 <h3>Information sur Contrat</h3>
-                <h:dataTable value="#{amContrat.listegaranti}" var="item">
-                    <h:column>
+                <p:dataTable  value="#{amContrat.listegaranti}" var="item" >
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Limite de Garanti"/>
                         </f:facet>
-                        <h:outputText value="#{item.mtlimite}"/>
-                    </h:column>
+                        <p:outputText value="#{item.mtlimite}"/>
+                    </p:column>
 
-                    <h:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Garanti"/>
                         </f:facet>
                         <h:outputText value="#{item.amGarantiId.libelle}"/>
-                    </h:column>
+                    </p:column>
 
-                </h:dataTable>
+                </p:dataTable>
 
                 <br></br>
                 <br></br>
@@ -69,10 +70,14 @@
                 <h:outputText id="nbroues" value="#{amContrat.vehicule.nbroues}" title="nbroues" />
 
 
-
+                <h:commandLink>
+                    <p:outputLabel value="pdf" />
+                    <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+                </h:commandLink>
 
 
             </h:form>
+
         </f:view>
 
 
