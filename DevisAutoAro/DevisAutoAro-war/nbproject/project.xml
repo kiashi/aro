@@ -10,11 +10,7 @@
                     <file>${reference.DevisAutoAro-ejb.dist}</file>
                 </library>
                 <library dirs="200">
-<<<<<<< HEAD
-                    <file>${libs.primface_6.1.classpath}</file>
-=======
-                    <file>${libs.PrimeFaces_6.1.classpath}</file>
->>>>>>> 94fda823e7f61e89651988ced81f8366d96ed9ff
+                    <file>${file.reference.primefaces-6.1.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
