@@ -8,47 +8,66 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <h:outputStylesheet name="/fo/css/bootstrap.min.css"/>
-        <h:outputStylesheet name="/fo/css/font-Montserrat.css"/>
-        <h:outputStylesheet name="/fo/css/font-Lato.css"/>
-        <h:outputStylesheet name="/fo/css/default.css"/>
+        <h:outputStylesheet name="/material-design/css/googleapi1.css"/>
+        <h:outputStylesheet name="/material-design/css/googleapi2.css"/>
+        <h:outputStylesheet name="/material-design/css/material.min.css"/>
+        <h:outputStylesheet name="/material-design/css/styles.css"/>
 
-        <h:outputScript name="/fo/js/jquery.min.js"/>
-        <h:outputScript name="/fo/js/bootstrap.min.js"/>
+        <style>
+            #view-source {
+                position: fixed;
+                display: block;
+                right: 0;
+                bottom: 0;
+                margin-right: 40px;
+                margin-bottom: 40px;
+                z-index: 900;
+            }
+        </style>
+
         <title>ARO</title>
     </h:head>
 
     <h:body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <div id="top">
+                <ui:insert name="top">
+                    <ui:include src="header.xhtml"/>
+                </ui:insert>
+            </div>
 
-        <div id="top">
-            <ui:insert name="top">
-                <ui:include src="header.xhtml"/>
-            </ui:insert>
-        </div>
+            <div id="left">
+                <ui:insert name="left">
+                    <ui:include src="left.xhtml"/>
+                </ui:insert>
+            </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div id="left">
-                    <ui:insert name="left"></ui:insert>
-                </div>
-                <div>
-                    <div id="right">
-                        <ui:insert name="right"></ui:insert>
-                    </div>
-                    <div id="content">
+            <div id="left">
+                <ui:insert name="left"></ui:insert>
+            </div>
+            <div class="android-content mdl-layout__content">
+                <div class="mdl-grid ">
+                    <div class="mdl-cell mdl-cell--1-col"></div>
+
+                    <div class="mdl-cell mdl-cell--10-col">
                         <ui:insert name="content">
 
                         </ui:insert>
                     </div>
+                    <div class="mdl-cell mdl-cell--1-col"></div>
                 </div>
             </div>
+
         </div>
 
         <div id="bottom">
             <ui:insert name="bottom">
-               
+
             </ui:insert>
         </div>
 
     </h:body>
 
+    <h:outputScript name="/material-design/js/material.min.js"/>
+    <h:outputScript name="/fo/js/bootstrap.min.js"/>
 </html>

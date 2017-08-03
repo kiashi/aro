@@ -15,8 +15,8 @@
 
                 <f:view>
                     <h:form>
-                        <div class="row">
-                            <div class="col-md-3">
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--3-col">
                                 <h:outputLabel value="Durée (mois):" for="nbMois" />
                                 <h:selectOneMenu class="form-control" id="nbMois" value = "#{devisAutoMotoMB.dureeMois}" title="nbMois"> 
                                     <f:selectItem itemValue = "1" itemLabel = "1" /> 
@@ -60,9 +60,9 @@
 
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="mdl-cell mdl-cell--6-col">
                                 <h:dataTable class="table-condensed" value="#{devisAutoMotoMB.listeSaisieGaranti}" var="item">
-                                    <h:column>
+                                    <h:column >
                                         <f:facet name="header">
                                             <h:outputText value="Garantie"/>
                                         </f:facet>
@@ -83,7 +83,7 @@
                                 </h:dataTable>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="mdl-cell mdl-cell--3-col">
                                 
                                 <h:outputLabel value="TE : " for="tauxE" />
                                 <h:inputText class="form-control" value="#{devisAutoMotoMB.tauxE}"/>
