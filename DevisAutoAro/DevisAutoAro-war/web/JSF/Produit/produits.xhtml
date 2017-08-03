@@ -16,9 +16,10 @@
                     <h:form>
                         <div class="android-more-section">
                             <div class="android-section-title mdl-typography--display-1-color-contrast">Listes Poduits avec description</div>
+                            <div class="android-card-container mdl-grid">
                             <ui:repeat value="#{produitMB.listeProduit}" var ="item">
 
-                                <div class="android-card-container mdl-grid">
+                                
                                     <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
                                         <div class="mdl-card__media">
 
@@ -31,17 +32,15 @@
                                             <span class="mdl-typography--font-light mdl-typography--subhead"><h:outputText value="#{item.description}" /></span>
                                         </div>
                                         <div class="mdl-card__actions">
-                                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="">
-                                                Make the switch
-                                                <i class="material-icons">chevron_right</i>
-                                            </a>
+                                           
                                             <h:link class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" rendered="#{clientSession!=null}" outcome="/JSF/Produit/#{item.nompage}/#{item.nompage}?idProduit=#{item.id}" includeViewParams="true" value="Se souscrire">
                                                 <i class="material-icons">chevron_right</i>
                                             </h:link>
                                         </div>
                                     </div>
-                                </div>
+                                
                             </ui:repeat>
+                                </div>
                         </div>
 
 
