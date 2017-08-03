@@ -22,8 +22,8 @@ public class Bot {
 
     public static final int BOT = 0;
     public static final int CLIENT = 1;
-    public static String tagFile = "C://Users//LENOVO//Documents//GitHub//aro//DevisAutoAro//DevisAutoAro-ejb//ressources//tags.json";
-    public static String discussionFile = "C://Users//LENOVO//Documents//GitHub//aro//DevisAutoAro//DevisAutoAro-ejb//ressources//discussion.json";
+    public static String tagFile = "C://Users//mia74//Documents//GitHub//aro//DevisAutoAro//DevisAutoAro-ejb//ressources//tags.json";
+    public static String discussionFile = "C://Users//mia74//Documents//GitHub//aro//DevisAutoAro//DevisAutoAro-ejb//ressources//discussion.json";
 
     /**
      * Execute la méthode spécifiée *action, depuis la classe Actions Retourne
