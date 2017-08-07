@@ -19,6 +19,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/JSF/bot/bot.xhtml</welcome-file>
+        <welcome-file>faces/JSF/Front/accueil.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>

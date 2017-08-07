@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
  
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <f:metadata>  
         <f:viewParam name="idContrat" value="#{amContrat.idContrat}"  
@@ -15,37 +16,70 @@
         <title>Auto-Moto Contrat</title>
     </h:head>
     <h:body>
-
-
-
-
-        <ui:composition template="./../../../WEB-INF/template-front/template.xhtml">
-
-            <ui:define name="content">
                 <f:view>
 
 
                     <h:form>
                         <h3>Information sur Contrat</h3>
+                        <h4>Information sur le Client</h4>
+                        
+                        <h:outputLabel value="Numero Police" for="numeropolice" />
+                        &nbsp;
+                        <h:outputText id="numeropolice" value="#{amContrat.souscription.nopolice}" title="numeropolices" />
+                        <br></br>
+                        
+                        <h:outputLabel value="Nom et prenom" for="nom" />
+                        &nbsp;
+                        <h:outputText id="nom" value="#{amContrat.souscription.clientSouscripteur.nom} #{amContrat.souscription.clientSouscripteur.prenom}" title="nom" />
+                        <br></br>
+                        
+                        <h:outputLabel value="Adresse" for="adresse" />
+                        &nbsp;
+                        <h:outputText id="adresse" value="#{amContrat.souscription.clientSouscripteur.adresse}" title="adresse" />
+                        <br></br>
+                        
+                        <h:outputLabel value="Numero Client" for="numero" />
+                        &nbsp;
+                        <h:outputText id="numero" value="#{amContrat.souscription.clientSouscripteur.noclient}" title="numero" />
+                        <br></br>
+                        
+                         <h:outputLabel value="Agence" for="agence" />
+                        &nbsp;
+                        <h:outputText id="agence" value="#{amContrat.souscription.clientSouscripteur.agence.nom}" title="agence" />
+                        <br></br>
+                        <br></br>
+                        <h4>Renseignement concernant le vehicule a assurer</h4>
+
+
+                        <h:outputLabel value="Puissance" for="puissance" />
+                        &nbsp;
+                        <h:outputText id="puissance" value="#{amContrat.vehicule.puissanceFisc}" title="puissance" />
+                        <br></br>
+                        <h:outputLabel value="Nb Place" for="place" />
+                        &nbsp;
+                        <h:outputText id="place" value="#{amContrat.vehicule.nbPlace}" title="place" />
+                        <br></br>
+                        <h:outputLabel value="Source Energie" for="sourceenergie" />
+                        &nbsp;
+                        <h:outputText id="sourceenergie" value="#{amContrat.vehicule.sourceEnergie}" title="sourceenergie" />
+                        <br></br>
                         <h:dataTable value="#{amContrat.listegaranti}" var="item">
                             <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Limite de Garanti"/>
-                                </f:facet>
-                                <h:outputText value="#{item.mtlimite}"/>
-                            </h:column>
-
-                            <h:column>
-                                <f:facet name="header">
+                              <f:facet name="header">
                                     <h:outputText value="Garanti"/>
                                 </f:facet>
                                 <h:outputText value="#{item.amGarantiId.libelle}"/>
                             </h:column>
 
-                        </h:dataTable>
+                            <h:column>
+                                
+                                  <f:facet name="header">
+                                    <h:outputText value="Limite de Garanti"/>
+                                </f:facet>
+                                <h:outputText value="#{item.mtlimite}"/>
+                            </h:column>
 
-                        <br></br>
-                        <br></br>
+                        </h:dataTable>
                         <br></br>
                         <h:outputLabel value="Prime Total" for="primetotal" />
                         &nbsp;
@@ -65,26 +99,11 @@
                         &nbsp;
                         <h:outputText rendered="#{amContrat.souscription.valide==0}" id="valide" value="Non Paye" title="valide" />
                         <h:outputText rendered="#{amContrat.souscription.valide==1}" id="valide1" value="Paye" title="valide1" />
-
-                        <h3>Information sur Vehicule</h3>
-
-
-                        <h:outputLabel value="Puissance" for="puissance" />
-                        &nbsp;
-                        <h:outputText id="puissance" value="#{amContrat.vehicule.puissanceFisc}" title="puissance" />
                         <br></br>
-                        <h:outputLabel value="Nb Roues" for="nbroues" />
-                        &nbsp;
-                        <h:outputText id="nbroues" value="#{amContrat.vehicule.nbroues}" title="nbroues" />
-
-
-
-
-
+                        <p:barcode value="http://localhost:8080/DevisAutoAro-war/faces/JSF/Produit/auto-moto/depot.xhtml?idContrat=#{amContrat.idContrat}" type="qr" width="150" height="150"/> 
                     </h:form>
                 </f:view>
-            </ui:define>
-        </ui:composition>
+        
 
 
 

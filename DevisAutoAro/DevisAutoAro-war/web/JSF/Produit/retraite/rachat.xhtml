@@ -5,21 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
      <f:metadata>  
-        <f:viewParam name="idContrat" value="#{depotRetraiteMB.idContrat}"  
+         <f:viewParam name="idContrat" value="#{rtRachatMB.idContrat}"  
                      required="true"/>  
-        <f:viewAction action="#{depotRetraiteMB.loadContrat()}"/>  
+        <f:viewAction action="#{rtRachatMB.loadContrat()}"/>  
     </f:metadata>
     <h:head>
         <title>Rachat</title>
     </h:head>
     <h:body>
-       
-        
-        
-        
-        <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px" />
-
-        
+        Beneficiaire en cas de deces : #{rtRachatMB.contrat.beneficiaireCasDeces}
+      
     </h:body>
 </html>
 

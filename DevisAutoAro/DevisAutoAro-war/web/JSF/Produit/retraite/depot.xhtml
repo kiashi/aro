@@ -58,7 +58,7 @@
                 <h:outputText value="#{depotRetraiteMB.total}"/>
 
 
-                <h:commandLink action="/JSF/Produit/retraite/rachat.xhtml"  value="Rachat"/>
+                <h:link outcome="/JSF/Produit/retraite/rachat?idContrat=#{depotRetraiteMB.idContrat}" includeViewParams="true" value="Rachat"/>
             </h:form>
 
 

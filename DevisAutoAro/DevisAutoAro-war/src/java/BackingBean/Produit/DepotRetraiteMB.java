@@ -12,11 +12,13 @@ import entity.Client;
 import entity.RtContrat;
 import entity.RtDepot;
 import entity.SouscriptionProduit;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+
 import javax.faces.context.FacesContext;
 
 /**
