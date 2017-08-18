@@ -116,9 +116,7 @@ public class AutoMotoMB {
     }
 
     public String ajouterContratAutoMoto() {
-        AmCategorietarifaire cat= new AmCategorietarifaire();
-        cat.setId(1);
-        vehicule.setCategorieTarifaire(cat);
+        
         autoMotoBean.souscrireAuto(vehicule, 12, garanti);
         System.out.println("_________" + prime);
         
