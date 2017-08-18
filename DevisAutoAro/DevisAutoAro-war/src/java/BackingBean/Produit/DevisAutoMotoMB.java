@@ -46,6 +46,10 @@ public class DevisAutoMotoMB {
     private Double tauxVA = new Double(0);
     private Double primeTotal = new Double(0);
 
+  
+
+      
+    
     public Double getTauxE() {
         return tauxE;
     }
@@ -116,6 +120,8 @@ public class DevisAutoMotoMB {
     }
 
     public void calculer() {
+        System.out.println("___________sourceEnergie"+auto.getSourceEnergie());
+        
         prime = devisAutoBean.calculDevis(auto, listeSaisieGaranti, dureeMois);
         primeTotal = (prime * tauxE) + (prime * tauxVA);
 
