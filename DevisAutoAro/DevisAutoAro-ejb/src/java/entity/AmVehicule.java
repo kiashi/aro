@@ -99,8 +99,6 @@ public class AmVehicule implements Serializable {
     @Column(name = "FIN_VISITE_TECH")
    
     private Date finVisiteTech;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amVehicule")
-    private List<AmSinistre> amSinistreList;
     @JoinColumn(name = "SOUSCRIPTION_PRODUIT_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private SouscriptionProduit souscriptionProduit;
@@ -242,14 +240,6 @@ public class AmVehicule implements Serializable {
         this.finVisiteTech = finVisiteTech;
     }
 
-    @XmlTransient
-    public List<AmSinistre> getAmSinistreList() {
-        return amSinistreList;
-    }
-
-    public void setAmSinistreList(List<AmSinistre> amSinistreList) {
-        this.amSinistreList = amSinistreList;
-    }
 
     public SouscriptionProduit getSouscriptionProduit() {
         return souscriptionProduit;

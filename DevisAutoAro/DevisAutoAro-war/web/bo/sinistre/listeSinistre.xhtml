@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template-back/template.xhtml">
+
+            <ui:define name="content">
+                <div class="mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+                    <table>
+                        <thead>
+                            <th>Date</th>
+                            <th>Nature</th>
+                            <th>Client</th>
+                            <th>N° contrat</th>
+                            <th>Lieu</th>
+                            <th>Conducteur</th>
+                            <th>Immatriculation du véhicule</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{listeSinistreBoMB.sinistres}" var="sinistre">
+                                <tr>
+                                    <td>#{listeSinistreBoMB.util.dateToString(sinistre.dateSinistre)}</td>
+                                    <td>#{sinistre.categorie}</td>
+                                    <td>#{sinistre.client}</td>
+                                    <td>#{sinistre.idSouscription}</td>
+                                    <td>#{sinistre.lieu}</td>
+                                    <td>#{sinistre.conducteur}</td>
+                                    <td>#{sinistre.immVehicule}</td>   
+                                    <td><h:link outcome="/bo/sinistre/ficheSinistre.xhtml?idSinistre=#{sinistre.id}" value="Voir" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/></td>   
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

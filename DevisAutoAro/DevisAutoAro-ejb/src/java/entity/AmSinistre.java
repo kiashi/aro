@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package entity;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,11 +36,33 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "AmSinistre.findAll", query = "SELECT a FROM AmSinistre a")
     , @NamedQuery(name = "AmSinistre.findById", query = "SELECT a FROM AmSinistre a WHERE a.id = :id")
-    , @NamedQuery(name = "AmSinistre.findByLibelle", query = "SELECT a FROM AmSinistre a WHERE a.libelle = :libelle")
     , @NamedQuery(name = "AmSinistre.findByDetails", query = "SELECT a FROM AmSinistre a WHERE a.details = :details")
     , @NamedQuery(name = "AmSinistre.findByDaty", query = "SELECT a FROM AmSinistre a WHERE a.daty = :daty")
     , @NamedQuery(name = "AmSinistre.findByLieu", query = "SELECT a FROM AmSinistre a WHERE a.lieu = :lieu")})
-public class AmSinistre implements Serializable {
+public class AmSinistre extends BaseModele implements Serializable {
+
+    @Size(max = 10)
+    @Column(name = "HEURE")
+    private String heure;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "LATITUDE")
+    private Double latitude;
+    @Column(name = "LONGITUDE")
+    private Double longitude;
+    @Column(name = "TERMINE")
+    private Integer termine;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amSinistreId")
+    private transient List<DommagesSinistre> dommagesSinistreList;
+    @JoinColumn(name = "SOUSCRIPTION_PRODUIT_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private SouscriptionProduit souscriptionProduitId;
+    @JoinColumn(name = "SIN_CATEGORIE_ID", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private SinCategorie categorie;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amSinistreId")
+    private transient List<SinRapport> sinRapportList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amSinistreId")
+    private transient List<SinCirconstance> sinCirconstanceList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,9 +70,6 @@ public class AmSinistre implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 100)
-    @Column(name = "LIBELLE")
-    private String libelle;
     @Size(max = 500)
     @Column(name = "DETAILS")
     private String details;
@@ -62,16 +79,45 @@ public class AmSinistre implements Serializable {
     @Size(max = 80)
     @Column(name = "LIEU")
     private String lieu;
-    @JoinColumn(name = "AM_VEHICULE_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private AmVehicule amVehicule;
-    @JoinColumn(name = "CLIENT_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Client client;
+
+    @Column(name = "DEMANDE")
+    private Integer demande;
+    @Column(name = "CONDUCTEUR")
+    private String conducteur;
+    @Column(name = "NOM")
+    private String nomConducteur;
+    @Column(name = "PRENOM")
+    private String prenomConducteur;
+    @Column(name = "ADRESSE")
+    private String adresseConducteur;
+    @Column(name = "DATE_NAISSANCE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dnConducteur;
+    @Column(name = "NOPERMIS")
+    private String nopermis;
+    @Column(name = "NODUPLICATA")
+    private String noduplicata;
+    @Column(name = "CATEGORIEPERMIS")
+    private String catPermis;
+    @Column(name = "CATVALIDEES")
+    private String catValidees;
+    @Column(name = "DEB_VALIDITE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date debValidite;
+    @Column(name = "FIN_VALIDITE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date finValidite;
+    
+    @Column(name = "DATE_DELIVRANCE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateDelivrance;
+    @Column(name = "LIEU_DELIVRANCE")
+    private String lieuDelivrance;
+    @Column(name = "CAP_OBTENU")
+    private String capObtenu;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "amSinistre")
-    private List<PhotoSinistre> photoSinistreList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "amSinistre")
-    private List<SinSuivi> sinSuiviList;
+    private transient List<PhotoSinistre> photoSinistreList;
 
     public AmSinistre() {
     }
@@ -86,14 +132,6 @@ public class AmSinistre implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
     }
 
     public String getDetails() {
@@ -120,39 +158,134 @@ public class AmSinistre implements Serializable {
         this.lieu = lieu;
     }
 
-    public AmVehicule getAmVehicule() {
-        return amVehicule;
+    public SinCategorie getCategorie() {
+        return categorie;
     }
 
-    public void setAmVehicule(AmVehicule amVehicule) {
-        this.amVehicule = amVehicule;
+    public void setCategorie(SinCategorie categorie) {
+        this.categorie = categorie;
     }
 
-    public Client getClient() {
-        return client;
+    public Integer getDemande() {
+        return demande;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setDemande(Integer demande) {
+        this.demande = demande;
     }
 
-    @XmlTransient
-    public List<PhotoSinistre> getPhotoSinistreList() {
-        return photoSinistreList;
+    public String getConducteur() {
+        return conducteur;
     }
 
-    public void setPhotoSinistreList(List<PhotoSinistre> photoSinistreList) {
-        this.photoSinistreList = photoSinistreList;
+    public void setConducteur(String conducteur) {
+        this.conducteur = conducteur;
     }
 
-    @XmlTransient
-    public List<SinSuivi> getSinSuiviList() {
-        return sinSuiviList;
+    public String getNomConducteur() {
+        return nomConducteur;
     }
 
-    public void setSinSuiviList(List<SinSuivi> sinSuiviList) {
-        this.sinSuiviList = sinSuiviList;
+    public void setNomConducteur(String nomConducteur) {
+        this.nomConducteur = nomConducteur;
     }
+
+    public String getPrenomConducteur() {
+        return prenomConducteur;
+    }
+
+    public void setPrenomConducteur(String prenomConducteur) {
+        this.prenomConducteur = prenomConducteur;
+    }
+
+    public String getAdresseConducteur() {
+        return adresseConducteur;
+    }
+
+    public void setAdresseConducteur(String adresseConducteur) {
+        this.adresseConducteur = adresseConducteur;
+    }
+
+    public Date getDnConducteur() {
+        return dnConducteur;
+    }
+
+    public void setDnConducteur(Date dnConducteur) {
+        this.dnConducteur = dnConducteur;
+    }
+
+    public String getNopermis() {
+        return nopermis;
+    }
+
+    public void setNopermis(String nopermis) {
+        this.nopermis = nopermis;
+    }
+
+    public String getNoduplicata() {
+        return noduplicata;
+    }
+
+    public void setNoduplicata(String noduplicata) {
+        this.noduplicata = noduplicata;
+    }
+
+    public String getCatPermis() {
+        return catPermis;
+    }
+
+    public void setCatPermis(String catPermis) {
+        this.catPermis = catPermis;
+    }
+
+    public String getCatValidees() {
+        return catValidees;
+    }
+
+    public void setCatValidees(String catValidees) {
+        this.catValidees = catValidees;
+    }
+
+    public Date getDebValidite() {
+        return debValidite;
+    }
+
+    public void setDebValidite(Date debValidite) {
+        this.debValidite = debValidite;
+    }
+
+    public Date getFinValidite() {
+        return finValidite;
+    }
+
+    public void setFinValidite(Date finValidite) {
+        this.finValidite = finValidite;
+    }
+
+    public Date getDateDelivrance() {
+        return dateDelivrance;
+    }
+
+    public void setDateDelivrance(Date dateDelivrance) {
+        this.dateDelivrance = dateDelivrance;
+    }
+
+    public String getLieuDelivrance() {
+        return lieuDelivrance;
+    }
+
+    public void setLieuDelivrance(String lieuDelivrance) {
+        this.lieuDelivrance = lieuDelivrance;
+    }
+
+    public String getCapObtenu() {
+        return capObtenu;
+    }
+
+    public void setCapObtenu(String capObtenu) {
+        this.capObtenu = capObtenu;
+    }
+
 
     @Override
     public int hashCode() {
@@ -176,7 +309,57 @@ public class AmSinistre implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.AmSinistre[ id=" + id + " ]";
+        return "com.misaina.modele.AmSinistre[ id=" + id + " ]";
     }
-    
+
+    public String getHeure() {
+        return heure;
+    }
+
+    public void setHeure(String heure) {
+        this.heure = heure;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Integer getTermine() {
+        return termine;
+    }
+
+    public void setTermine(Integer termine) {
+        this.termine = termine;
+    }
+
+    @XmlTransient
+    public List<DommagesSinistre> getDommagesSinistreList() {
+        return dommagesSinistreList;
+    }
+
+    public void setDommagesSinistreList(List<DommagesSinistre> dommagesSinistreList) {
+        this.dommagesSinistreList = dommagesSinistreList;
+    }
+
+    public SouscriptionProduit getSouscriptionProduitId() {
+        return souscriptionProduitId;
+    }
+
+    public void setSouscriptionProduitId(SouscriptionProduit souscriptionProduitId) {
+        this.souscriptionProduitId = souscriptionProduitId;
+    }
+
+
 }

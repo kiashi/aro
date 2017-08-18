@@ -41,7 +41,7 @@ public class DevisAutoMotoMB {
     private Double prime = new Double(0);
 
     private Integer dureeMois = 12;
-    
+
     private Double tauxE = new Double(0);
     private Double tauxVA = new Double(0);
     private Double primeTotal = new Double(0);
@@ -70,37 +70,11 @@ public class DevisAutoMotoMB {
         this.primeTotal = primeTotal;
     }
 
-    
-
     /**
      * Creates a new instance of DevisAutoMotoMB
      */
     private List<SaisieGaranti> listeSaisieGaranti;
     private List<AmCategorietarifaire> listeCategorieTarifaire;
-    private AmCategorietarifaire categorieTarifaireSelect;
-
-    private Converter catTarifaireConverter = new Converter() {
-        /**
-         * Convertit une String en Magasin.
-         *
-         * @param value valeur à convertir
-         */
-        @Override
-        public Object getAsObject(FacesContext context, UIComponent component, String value) {
-            return amCategorietarifaireBean.findById(new Integer(value));
-        }
-
-        /**
-         * Convertit un Magasin en String.
-         *
-         * @param value valeur à convertir
-         */
-        @Override
-        public String getAsString(FacesContext context, UIComponent component, Object value) {
-            AmCategorietarifaire catTarifaire = (AmCategorietarifaire) value;
-            return catTarifaire.getId() + "";
-        }
-    };
 
     public List<SaisieGaranti> getListeSaisieGaranti() {
         if (listeSaisieGaranti == null) {
@@ -142,14 +116,9 @@ public class DevisAutoMotoMB {
     }
 
     public void calculer() {
-        System.out.println("---------" + auto.getSourceEnergie());
-        System.out.println("---------" + auto.getNbPlace());
-        System.out.println("---------" + auto.getPuissanceFiscale());
-        auto.setCategorieTarifaire(categorieTarifaireSelect);
         prime = devisAutoBean.calculDevis(auto, listeSaisieGaranti, dureeMois);
-        primeTotal= (prime*tauxE)+(prime*tauxVA);
-        //System.out.println("_______" + primeTotal);
-        System.out.println("_________" + prime);
+        primeTotal = (prime * tauxE) + (prime * tauxVA);
+
     }
 
     public Double getPrime() {
@@ -177,22 +146,6 @@ public class DevisAutoMotoMB {
 
     public void setListeCategorieTarifaire(List<AmCategorietarifaire> listeCategorieTarifaire) {
         this.listeCategorieTarifaire = listeCategorieTarifaire;
-    }
-
-    public AmCategorietarifaire getCategorieTarifaireSelect() {
-        return categorieTarifaireSelect;
-    }
-
-    public void setCategorieTarifaireSelect(AmCategorietarifaire categorieTarifaireSelect) {
-        this.categorieTarifaireSelect = categorieTarifaireSelect;
-    }
-
-    public Converter getCatTarifaireConverter() {
-        return catTarifaireConverter;
-    }
-
-    public void setCatTarifaireConverter(Converter catTarifaireConverter) {
-        this.catTarifaireConverter = catTarifaireConverter;
     }
 
 }
