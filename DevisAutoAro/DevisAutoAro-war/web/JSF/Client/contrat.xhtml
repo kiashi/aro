@@ -14,28 +14,29 @@
                     <h:form>
                         <div class="android-more-section">
                             <h4>Mes contrats</h4>
-                            <h:dataTable class="table table-hover mdl-cell--12-col mdl-shadow--2dp" value="#{profilMB.listeContrat}" var="item">
-
-
-                                <h:column>
-
-                                    <h:outputText value="#{item.produit.intitule}"/>
-                                </h:column>
-                                <h:column>
-
-                                    <h:outputText value="#{item.nopolice}"/>
-                                </h:column>
-                                <h:column>
-
-                                    <h:link outcome="/JSF/Produit/#{item.produit.nompage}/depot?idContrat=#{item.id}" includeViewParams="true" value="Gérer"/>
-
-                                </h:column>
-                                <h:column>
-
-                                    <h:link rendered="#{item.valide==0}" outcome="/JSF/Front/paiement?idContrat=#{item.id}" includeViewParams="true" value="Payer"/>
-
-                                </h:column>
-                            </h:dataTable>
+                            
+                                    
+                                <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">N° police</th>
+                                            <th class="mdl-data-table__cell--non-numeric">Produit</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat value="#{profilMB.listeContrat}" var="item">
+                                            <tr>
+                                                <td class="mdl-data-table__cell--non-numeric">#{item.nopolice}</td>
+                                                <td class="mdl-data-table__cell--non-numeric">#{item.produit.intitule}</td>
+                                                <td><h:link outcome="/JSF/Produit/#{item.produit.nompage}/depot?idContrat=#{item.id}" includeViewParams="true" value="Gérer"/></td>
+                                                <td><h:link rendered="#{item.valide==0}" outcome="/JSF/Front/paiement?idContrat=#{item.id}" includeViewParams="true" value="Payer"/></td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            
                         </div>
                     </h:form>
                 </f:view>

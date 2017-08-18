@@ -18,29 +18,33 @@
             <ui:define name="content">
                 <div class="android-more-section">
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--3-col">
-                            <ul class="demo-list-icon mdl-list">
-                                <li class="mdl-list__item">
-                                    <span class="mdl-list__item-primary-content">
-                                        <i class="material-icons mdl-list__item-icon">person</i>
-                                        Informations sur le contrat
-                                    </span>
-                                </li>
+                        
+                        
+                        <div class="mdl-cell mdl-cell--3-col" style="left: auto; max-height: 158px; position: relative; top: 0px;">
+                            <nav class="devsite-section-nav devsite-nav nocontent" >
+                                <ul class="demo-list-icon mdl-list">
+                                    <li class="mdl-list__item">
+                                        <span class="mdl-list__item-primary-content">
+                                            <h:link class="mdl-navigation__link" outcome="/JSF/Produit/auto-moto/depot.xhtml?idContrat=#{ficheSinistreMB.sinistre.souscriptionProduitId.id}"  includeViewParams="true">Informations sur le contrat</h:link>
+                                        </span>
+                                    </li>
 
-                                <li class="mdl-list__item">
-                                    <span class="mdl-list__item-primary-content">
-                                        <i class="material-icons mdl-list__item-icon">person</i>
-                                        <h:link class="mdl-list__item" outcome="/JSF/Produit/auto-moto/listeSinistres.xhtml?idSouscription=#{ficheSinistreMB.sinistre.souscriptionProduitId.id}" includeViewParams="true" value="">Sinistres</h:link>
-                                    </span>
-                                </li>
-                            </ul>
+                                    <li class="mdl-list__item">
+                                        <span class="mdl-list__item-primary-content">
+                                            <h:link class="mdl-navigation__link" outcome="/JSF/Produit/auto-moto/listeSinistres.xhtml?idSouscription=#{ficheSinistreMB.sinistre.souscriptionProduitId.id}" includeViewParams="true" value="">Sinistres</h:link>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
+                        
                         <div class="mdl-cell mdl-cell--9-col">
                             <h4>Accident sur le véhicule #{ficheSinistreMB.vehicule.noimm}</h4>
                             <h:panelGroup id="etat">
                                 <span class="mdl-chip">
                                     <span class="mdl-chip__text">#{ficheSinistreMB.etat}</span>
                                 </span>
+                                
                             </h:panelGroup>
 
                             <p>Catégorie : #{ficheSinistreMB.sinistre.categorie.libelle}</p>

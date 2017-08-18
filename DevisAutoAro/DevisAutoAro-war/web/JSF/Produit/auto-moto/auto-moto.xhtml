@@ -70,10 +70,7 @@
                                         <h:inputText  class="mdl-textfield__input"  id="puissanceFiscale" value="#{autoMotoMB.vehicule.puissanceFiscale}" title="puissanceFiscale" />
                                         <label class="mdl-textfield__label" for="puissanceFiscale">Puissance</label>
                                     </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <h:inputText  class="mdl-textfield__input"  id="sourceEnergie" value="#{autoMotoMB.vehicule.sourceEnergie}" title="sourceEnergie" />
-                                        <label class="mdl-textfield__label" for="sourceEnergie">Source d'energie</label>
-                                    </div>
+
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <h:inputText  class="mdl-textfield__input"  id="poidsVide" value="#{autoMotoMB.vehicule.poidsVide}" title="poidsVide" />
                                         <label class="mdl-textfield__label" for="poidsVide">Poids à vide</label>
@@ -94,54 +91,25 @@
 
                                 </div>
 
-<<<<<<< HEAD
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <h:inputText  class="mdl-textfield__input"  id="marque" value="#{autoMotoMB.vehicule.marque}" title="marque" />
-                                    <label class="mdl-textfield__label" for="marque">Marque</label>
-                                </div>                                
 
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <h:inputText  class="mdl-textfield__input"  id="matricule" value="#{autoMotoMB.vehicule.noImm}" title="matricule" />    
-                                    <label class="mdl-textfield__label" for="matricule">N° immatriculation</label>
-                                </div>
-
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <h:inputText  class="mdl-textfield__input"  id="puissanceFiscale" value="#{autoMotoMB.vehicule.puissanceFiscale}" title="puissanceFiscale" />
-                                    <label class="mdl-textfield__label" for="puissanceFiscale">Puissance</label>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    
                                     <label class="mdl-textfield__label" for="sourceEnergie">Source d'energie</label>
 
 
                                     <h:selectOneMenu class="mdl-textfield__input"  id="sourceEnergie" value="#{autoMotoMB.vehicule.sourceEnergie}" title="sourceEnergie" >
                                         <f:selectItem itemValue="Essence" itemLabel="Essence" />
                                         <f:selectItem itemValue="Diesel" itemLabel="Diesel" />
-                                        
+
                                     </h:selectOneMenu>
 
 
 
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <h:inputText  class="mdl-textfield__input"  id="poidsVide" value="#{autoMotoMB.vehicule.poidsVide}" title="poidsVide" />
-                                    <label class="mdl-textfield__label" for="poidsVide">Poids à vide</label>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <h:inputText  class="mdl-textfield__input"  id="nbPlace" value="#{autoMotoMB.vehicule.nbPlace}" title="nbPlace" />
-                                    <label class="mdl-textfield__label" for="nbPlace">Nombre de places</label>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <h:inputText  class="mdl-textfield__input"  id="nbRoues" value="#{autoMotoMB.vehicule.nbRoues}" title="nbRoues" />
-                                    <label class="mdl-textfield__label" for="nbRoues">Nombre de roues</label>
                                 </div>
 
                             </div>
 
                             <div class="mdl-cell mdl-cell--2-col">
 
-=======
->>>>>>> 330f987fa66701827d28a4b5ceb95d2d3c9db6c0
                             </div>
                             <h:dataTable class="table-condensed" value="#{autoMotoMB.garanti}" var="item">
                                 <h:column>
@@ -165,10 +133,9 @@
                             </h:dataTable>
 
                             <h:commandButton  value="Valider" action="#{autoMotoMB.ajouterContratAutoMoto()}">
-
                             </h:commandButton>
 
-                    </h:form>
+                        </h:form>
                     </div>
                 </ui:define>
             </ui:composition>

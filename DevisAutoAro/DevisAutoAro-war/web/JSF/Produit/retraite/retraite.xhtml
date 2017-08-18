@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <f:metadata>  
         <f:viewParam name="idProduit" value="#{retraiteMB.idProduit}"  
                      required="true"/>  
@@ -12,68 +13,84 @@
         <title>Retraite</title>
     </h:head>
     <h:body>
-        
 
-        <f:view>
+        <ui:composition template="./../../../WEB-INF/template-front/md-template.xhtml">
 
+            <ui:define name="content">
+                <div class="android-more-section">
 
-            <h:form>
-
-                <h:panelGrid columns="2">
-
-                     <h:outputLabel value="Souscripteur" for="client" />
-
-                     <h:selectOneMenu class="form-control" id="Souscripteur" value="#{retraiteMB.souscripteur}"
-                                     converter="#{retraiteMB.clientConverter}">
-                        <f:selectItems value="#{retraiteMB.listeClient}" 
-                                       var="client"
-                                       itemValue="#{client}"
-                                       itemLabel="#{client.nom} #{client.prenom}"/>
-                    </h:selectOneMenu>
-
-                    
-                    
-                    <h:outputLabel value="BeneficiaireCasDeces:" for="beneficiaireCasDeces" />
-                    <h:inputText id="beneficiaireCasDeces" value="#{retraiteMB.contrat.beneficiaireCasDeces}" title="BeneficiaireCasDeces" />
+                    <f:view>
+                        <h:form>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--3-col"></div>
+                                <div class="mdl-cell mdl-cell--6-col">
+                                    <h5>Souscription retraite</h5>
 
 
-                    <h:outputLabel value="RtOptionRetrait:" for="rtOptionRetrait" />
+                                    <h:outputLabel value="Souscripteur" for="client" />
 
-                    <h:selectOneMenu class="form-control" id="rtOptionRetrait" value="#{retraiteMB.rtOptionRetraitSelect}"
-                                     converter="#{retraiteMB.optionRetraitConverter}">
-                        <f:selectItems value="#{retraiteMB.listeOptionRetrait}" 
-                                       var="rtOptionRetrait"
-                                       itemValue="#{rtOptionRetrait}"
-                                       itemLabel="#{rtOptionRetrait.libelle}"/>
-                    </h:selectOneMenu>
+                                    <h:selectOneMenu class="form-control" id="Souscripteur" value="#{retraiteMB.souscripteur}"
+                                                     converter="#{retraiteMB.clientConverter}">
+                                        <f:selectItems value="#{retraiteMB.listeClient}" 
+                                                       var="client"
+                                                       itemValue="#{client}"
+                                                       itemLabel="#{client.nom} #{client.prenom}"/>
+                                    </h:selectOneMenu>
 
-                    <h:outputLabel value="RtPeriodiciteCotisation:" for="rtPeriodiciteCotisation" />
+                                    <div class="mdl-textfield mdl-js-textfield">
+                                        <h:inputTextarea class="mdl-textfield__input" value="#{retraiteMB.contrat.beneficiaireCasDeces}" rows= "3" id="beneficiaireCasDeces" >
+                                        </h:inputTextarea>
+                                        <label class="mdl-textfield__label" for="beneficiaireCasDeces">Bénéficiaire en cas de décès</label>
+                                    </div>
 
-                    <h:selectOneMenu class="form-control" id="rtPeriodiciteCotisation" value="#{retraiteMB.rtperiodeSelect}"
-                                     converter="#{retraiteMB.rtperiodeConverter}">
-                        <f:selectItems value="#{retraiteMB.listertperiode}" 
-                                       var="rtPeriodiciteCotisation"
-                                       itemValue="#{rtPeriodiciteCotisation}"
-                                       itemLabel="#{rtPeriodiciteCotisation.libelle}"/>
-                    </h:selectOneMenu>
+                                    <br></br>
 
-                    <h:outputLabel value="RtType:" for="rtType" />
+                                    <h:outputLabel value="RtOptionRetrait:" for="rtOptionRetrait" />
 
-                    <h:selectOneMenu class="form-control" id="rtType" value="#{retraiteMB.rtTypeSelect}"
-                                     converter="#{retraiteMB.rtTypeConverter}">
-                        <f:selectItems value="#{retraiteMB.listertType}" 
-                                       var="rtType"
-                                       itemValue="#{rtType}"
-                                       itemLabel="#{rtType.libelle}"/>
-                    </h:selectOneMenu>
+                                    <h:selectOneMenu class="form-control" id="rtOptionRetrait" value="#{retraiteMB.rtOptionRetraitSelect}"
+                                                     converter="#{retraiteMB.optionRetraitConverter}">
+                                        <f:selectItems value="#{retraiteMB.listeOptionRetrait}" 
+                                                       var="rtOptionRetrait"
+                                                       itemValue="#{rtOptionRetrait}"
+                                                       itemLabel="#{rtOptionRetrait.libelle}"/>
+                                    </h:selectOneMenu>
+                                    <br></br>
 
-                </h:panelGrid>
-                <h:commandButton  value="Valider" action="#{retraiteMB.ajouterContratRetraite()}"> 
+                                    <h:outputLabel value="RtPeriodiciteCotisation:" for="rtPeriodiciteCotisation" />
 
-                </h:commandButton>
-            </h:form>
-        </f:view>
+                                    <h:selectOneMenu class="form-control" id="rtPeriodiciteCotisation" value="#{retraiteMB.rtperiodeSelect}"
+                                                     converter="#{retraiteMB.rtperiodeConverter}">
+                                        <f:selectItems value="#{retraiteMB.listertperiode}" 
+                                                       var="rtPeriodiciteCotisation"
+                                                       itemValue="#{rtPeriodiciteCotisation}"
+                                                       itemLabel="#{rtPeriodiciteCotisation.libelle}"/>
+                                    </h:selectOneMenu>
+                                    <br></br>
 
+                                    <h:outputLabel value="RtType:" for="rtType" />
+
+                                    <h:selectOneMenu class="form-control" id="rtType" value="#{retraiteMB.rtTypeSelect}"
+                                                     converter="#{retraiteMB.rtTypeConverter}">
+                                        <f:selectItems value="#{retraiteMB.listertType}" 
+                                                       var="rtType"
+                                                       itemValue="#{rtType}"
+                                                       itemLabel="#{rtType.libelle}"/>
+                                    </h:selectOneMenu>
+                                    <br></br>
+
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Valider" action="#{retraiteMB.ajouterContratRetraite()}"> 
+
+                                    </h:commandButton>
+                                </div>
+                                <div class="mdl-cell mdl-cell--3-col"></div>
+
+
+                            </div>
+                        </h:form>
+                    </f:view>
+                </div>
+            </ui:define>
+        </ui:composition>
 
     </h:body>
 </html>
