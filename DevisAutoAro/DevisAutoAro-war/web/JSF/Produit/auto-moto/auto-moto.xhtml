@@ -69,8 +69,18 @@
                                     <label class="mdl-textfield__label" for="puissanceFiscale">Puissance</label>
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <h:inputText  class="mdl-textfield__input"  id="sourceEnergie" value="#{autoMotoMB.vehicule.sourceEnergie}" title="sourceEnergie" />
+                                    
                                     <label class="mdl-textfield__label" for="sourceEnergie">Source d'energie</label>
+
+
+                                    <h:selectOneMenu class="mdl-textfield__input"  id="sourceEnergie" value="#{autoMotoMB.vehicule.sourceEnergie}" title="sourceEnergie" >
+                                        <f:selectItem itemValue="Essence" itemLabel="Essence" />
+                                        <f:selectItem itemValue="Diesel" itemLabel="Diesel" />
+                                        
+                                    </h:selectOneMenu>
+
+
+
                                 </div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <h:inputText  class="mdl-textfield__input"  id="poidsVide" value="#{autoMotoMB.vehicule.poidsVide}" title="poidsVide" />

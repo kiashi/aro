@@ -123,7 +123,7 @@ public class AutoMotoMB {
         System.out.println("_________" + prime);
         
         MessageUtil.addFlashInfoMessage("Ajouter");
-        return "/JSF/Front/contrat?faces-redirect=true";
+        return "/JSF/Client/contrat?faces-redirect=true";
     }
 
 }
