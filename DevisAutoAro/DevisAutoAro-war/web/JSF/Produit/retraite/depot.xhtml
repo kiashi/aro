@@ -36,33 +36,34 @@
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <h:inputText class="mdl-textfield__input" id="mdp" value="#{depotRetraiteMB.mdp}" title="Code secret du compte" />
-                                <label class="mdl-textfield__label" for="mdp">Votre Numero de compte</label>
+                                <label class="mdl-textfield__label" for="mdp">Code secret du compte</label>
                             </div>
                             <h:commandButton action="#{depotRetraiteMB.ajouterDepot(depotRetraiteMB.idContrat)}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Ajouter"/>
                             <hr></hr>
 
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Date</th>
+                                        <th>Montant</th>
 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ui:repeat value="#{depotRetraiteMB.listeDepot}" var="item">
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">
+                                                <h:outputText value="#{item.daty}">
+                                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                </h:outputText>
+                                            </td>
+                                            <td>#{item.valeur}</td>
+                                        </tr>
+                                    </ui:repeat>
 
+                                </tbody>
+                            </table>
 
-
-                            <h:dataTable value="#{depotRetraiteMB.listeDepot}" var="item">
-
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Valeur"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.valeur}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Daty"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.daty}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </h:column>
-
-                            </h:dataTable>
                             <h:outputLabel value="TOTAL : "/>
                             <h:outputText value="#{depotRetraiteMB.total}"/>
 
