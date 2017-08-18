@@ -44,7 +44,7 @@ public class AmPrime implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 5)
+    @Size(max = 20)
     @Column(name = "SOURCEENERGIE")
     private String sourceenergie;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
