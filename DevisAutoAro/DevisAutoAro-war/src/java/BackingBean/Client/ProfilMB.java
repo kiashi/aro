@@ -68,7 +68,7 @@ public class ProfilMB {
         FacesContext context = FacesContext.getCurrentInstance();
         client = (Client) context.getExternalContext().getSessionMap().get("clientSession");
         profilBean.getInformationClient(client.getId());
-        return "/JSF/Front/profil.xhtml";
+        return "/JSF/Front/profil?faces-redirect=true";
     }
 
    
