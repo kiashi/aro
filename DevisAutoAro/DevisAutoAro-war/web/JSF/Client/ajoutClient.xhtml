@@ -3,95 +3,130 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Inscription Client</title>
     </h:head>
     <h:body>
-        <f:view>
+        <ui:composition template="./../../WEB-INF/template-front/md-template.xhtml">
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <div class="android-more-section">
+                            <h4><h:outputText value="Inscription"/></h4>
+                            <div class="mdl-card mdl-cell--12-col">
 
 
-            <h:form>
-                <h1><h:outputText value="Inscription Client"/></h1>
-                <h:panelGrid columns="3">
-                    <!--<h:outputLabel value="ClType:" for="clType" />
+                                <div class="mdl-grid">
+                                    <div class="mdl-cell mdl-cell--6-col">
+                                        <h6>Informations personnelles</h6>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"   id="nom" value="#{clientMB.client.nom}" title="Nom"/>
+                                            <label class="mdl-textfield__label" for="nom">Nom</label>
+                                            <h:message for="nom"></h:message>
+                                        </div>
 
-                    <h:selectOneMenu class="form-control" id="clType" value=""
-                                     converter="">
-                        <f:selectItems value="" 
-                                       var="clType"
-                                       itemValue=""
-                                       itemLabel=""/>
-                    </h:selectOneMenu>
-                    <h:message for="clType"></h:message>-->
-                    <h:outputLabel value="Nom:" for="nom" />
-                    <h:inputText id="nom" value="#{clientMB.client.nom}" title="Nom" />
-                    <h:message for="nom"></h:message>
-
-                    <h:outputLabel value="Prenom:" for="prenom" />
-                    <h:inputText id="prenom" value="#{clientMB.client.prenom}" title="Prenom" />
-                    <h:message for="prenom"></h:message>
-                    <h:outputLabel value="Adresse:" for="adresse" />
-                    <h:inputText id="adresse" value="#{clientMB.client.adresse}" title="Adresse" />
-                    <h:message for="adresse"></h:message>
-                    <h:outputLabel value="Profession:" for="profession" />
-                    <h:inputText id="profession" value="#{clientMB.client.profession}" title="Profession" />
-                    <h:message for="profession"></h:message>
-                    <h:outputLabel value="DateNaissance:" for="dateNaissance" />
-                    <h:inputText id="dateNaissance" value="#{clientMB.client.dateNaissance}" title="DateNaissance" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:message for="dateNaissance"></h:message>
-                    <h:outputLabel value="LieuNaissance:" for="lieuNaissance" />
-                    <h:inputText id="lieuNaissance" value="#{clientMB.client.lieuNaissance}" title="LieuNaissance" />
-                    <h:message for="lieuNaissance"></h:message>
-                    <h:outputLabel value="Cin:" for="cin" />
-                    <h:inputText id="cin" value="#{clientMB.client.cin}" title="Cin" />
-                    <h:message for="cin"></h:message>
-                    <h:outputLabel value="Tel:" for="tel" />
-                    <h:inputText id="tel" value="#{clientMB.client.tel}" title="Tel" />
-                    <h:message for="tel"></h:message>
-                    <h:outputLabel value="Email:" for="email" />
-                    <h:inputText id="email" value="#{clientMB.client.email}" title="Email" />
-                    <h:message for="email"></h:message>
-                    <h:outputLabel value="Mdp:" for="mdp" />
-                    <h:inputText id="mdp" value="#{clientMB.client.mdp}" title="Mdp" />
-                    <h:message for="mdp"></h:message>
-                    <h:outputLabel value="DateSouscription:" for="dateSouscription" />
-                    <h:inputText id="dateSouscription" value="#{clientMB.client.dateSouscription}" title="DateSouscription" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:message for="dateSouscription"></h:message>
-                    
-                    <!--debut -->
-                    <h:outputLabel value="Signature" for="signature" />
-                    
-
-                    <p:growl autoUpdate="true" />
-
-                    <p:signature style="width:400px;height:200px" widgetVar="sig" value="#{clientMB.client.signature}" required="true" guideline="true"/>
-
-                    <div style="margin:20px 0">
-                        <p:commandButton value="Submit" icon="ui-icon-check" update="output"/>
-                        <p:commandButton value="Clear" icon="ui-icon-close" type="button" onclick="PF('sig').clear()"/>
-                    </div>
-
-                    <p:outputPanel id="output">
-                        <h:outputText value="#{clientMB.client.signature}"/>
-                        <h:outputText rendered="#{not empty clientMB.client.signature}" style="font-size:24px;display:block" value="Your Signature" />
-                        <p:signature style="width:400px;height:200px;" value="#{clientMB.client.signature}" readonly="true"
-                                     rendered="#{not empty clientMB.client.signature}" backgroundColor="#eaeaea" color="#03a9f4"/>
-                    </p:outputPanel>
-
-                    
-                    <!-- Fin -->
-                    <h:commandButton  value="AJOUTER" action="#{clientMB.ajouterClient()}"/> 
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="prenom" value="#{clientMB.client.prenom}" title="Prenom" />
+                                            <label class="mdl-textfield__label" for="prenom">Prenom</label>
+                                            <h:message for="prenom"></h:message>
+                                        </div>
 
 
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="adresse" value="#{clientMB.client.adresse}" title="Prenom" />
+                                            <label class="mdl-textfield__label" for="adresse">Adresse</label>
+                                            <h:message for="adresse"></h:message>
+                                        </div>
 
-                </h:panelGrid>
-            </h:form>
-        </f:view>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="profession" value="#{clientMB.client.profession}" title="Profession" />
+                                            <label class="mdl-textfield__label" for="profession">Profession</label>
+                                            <h:message for="profession"></h:message>
+                                        </div>
+
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="dateNaissance" value="#{clientMB.client.dateNaissance}" title="DateNaissance" >
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:inputText>
+                                            <label class="mdl-textfield__label" for="dateNaissance">Date de naissance</label>
+                                            <h:message for="dateNaissance"></h:message>
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="lieuNaissance" value="#{clientMB.client.lieuNaissance}" title="LieuNaissance" />
+                                            <label class="mdl-textfield__label" for="lieuNaissance">LieuNaissance</label>
+                                            <h:message for="lieuNaissance"></h:message>
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="cin" value="#{clientMB.client.cin}" title="Cin" />
+                                            <label class="mdl-textfield__label" for="cin">Cin</label>
+                                            <h:message for="cin"></h:message>
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="tel" value="#{clientMB.client.tel}" title="Tel" />
+                                            <label class="mdl-textfield__label" for="cin">tel</label>
+                                            <h:message for="tel"></h:message>
+                                        </div>
+                                    </div>
+
+                                    <div class="mdl-cell mdl-cell--6-col">
+                                        <h6>Informations de connexion</h6>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="email" value="#{clientMB.client.email}" title="Email" />
+                                            <label class="mdl-textfield__label" for="email">Email</label>
+                                            <h:message for="email"></h:message>
+                                        </div>
+
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="mdp" value="#{clientMB.client.mdp}" title="Mdp" />
+                                            <label class="mdl-textfield__label" for="mdp">Mdp</label>
+                                            <h:message for="mdp"></h:message>
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <h:inputText  class="mdl-textfield__input"  id="dateSouscription" value="#{clientMB.client.dateSouscription}" title="DateSouscription" >
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:inputText>
+                                            <label class="mdl-textfield__label" for="dateSouscription">DateSouscription</label>
+                                            <h:message for="dateSouscription"></h:message>
+                                        </div>
+
+                                        
+                                        <p>Signature</p>
+                                        <p:growl autoUpdate="true" />
+
+                                        <p:signature style="width:400px;height:200px" widgetVar="sig" value="#{clientMB.client.signature}" required="true" guideline="true"/>
+
+                                        <div style="margin:20px 0">
+                                            <p:commandButton value="Submit" icon="ui-icon-check" class="mdl-button mdl-js-button mdl-js-ripple-effect" update="output"/>
+                                            <p:commandButton value="Clear" icon="ui-icon-close" class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" onclick="PF('sig').clear()"/>
+                                        </div>
+
+                                        <p:outputPanel id="output">
+                                            <h:outputText value="#{clientMB.client.signature}"/>
+                                            <h:outputText rendered="#{not empty clientMB.client.signature}" style="font-size:24px;display:block" value="Your Signature" />
+                                            <p:signature style="width:400px;height:200px;" value="#{clientMB.client.signature}" readonly="true"
+                                                         rendered="#{not empty clientMB.client.signature}" backgroundColor="#eaeaea" color="#03a9f4"/>
+                                        </p:outputPanel>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="S'inscrire" action="#{clientMB.ajouterClient()}"/> 
+
+                        </div>
+
+                    </h:form>
+
+                </f:view>
+            </ui:define>
+        </ui:composition>
 
     </h:body>
 </html>

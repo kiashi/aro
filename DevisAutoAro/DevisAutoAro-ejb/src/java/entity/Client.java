@@ -111,8 +111,7 @@ public class Client implements Serializable {
     @Column(name = "DATE_SOUSCRIPTION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateSouscription;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-    private List<AmSinistre> amSinistreList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
     private List<ClBalance> clBalanceList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
@@ -237,15 +236,7 @@ public class Client implements Serializable {
         this.dateSouscription = dateSouscription;
     }
 
-    @XmlTransient
-    public List<AmSinistre> getAmSinistreList() {
-        return amSinistreList;
-    }
-
-    public void setAmSinistreList(List<AmSinistre> amSinistreList) {
-        this.amSinistreList = amSinistreList;
-    }
-
+   
     @XmlTransient
     public List<ClBalance> getClBalanceList() {
         return clBalanceList;

@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <f:metadata>  
+        <f:viewParam name="idSinistre" value="#{ficheSinistreBoMB.idSinistre}"  
+                     /> 
+        <f:viewAction action="#{ficheSinistreBoMB.initData()}"/>  
+    </f:metadata>
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template-back/template.xhtml">
+
+            <ui:define name="content">
+
+                <div class="mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h5>Accident sur le véhicule #{ficheSinistreBoMB.vehicule.noimm}</h5>
+
+                        <p>Catégorie : #{ficheSinistreBoMB.sinistre.categorie.libelle}</p>
+                        <p>Date : #{ficheSinistreBoMB.util.dateToString(ficheSinistreBoMB.sinistre.daty)} - #{ficheSinistreBoMB.sinistre.heure}</p>
+                        <p>Lieu : #{ficheSinistreBoMB.sinistre.lieu}</p>
+
+                        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                            <div class="mdl-tabs__tab-bar">
+                                <a href="#conducteur-panel" class="mdl-tabs__tab is-active">Conducteur</a>
+                                <a href="#dommages-panel" class="mdl-tabs__tab">Dommages</a>
+                                <a href="#circonstance-panel" class="mdl-tabs__tab">Circonstance</a>
+                                <a href="#photos-panel" class="mdl-tabs__tab">Photos</a>
+                                <a href="#rapports-panel" class="mdl-tabs__tab">Rapports</a>
+                            </div>
+
+                            <div class="mdl-tabs__panel is-active" id="conducteur-panel">
+                                <div class="mdl-grid">
+                                    <div class="mdl-cell mdl-cell--4-col">
+                                        <p>Conducteur : </p>
+                                        <p>Nom : </p>
+                                        <p>Prénom : </p>
+                                        <p>Date de naissance : </p>
+                                        <p>Adresse : </p>
+
+                                    </div>
+                                    <div class="mdl-cell mdl-cell--8-col">
+                                        <p>#{ficheSinistreBoMB.sinistre.conducteur}</p>
+                                        <p>#{ficheSinistreBoMB.sinistre.nomConducteur}</p>
+                                        <p>#{ficheSinistreBoMB.sinistre.prenomConducteur}</p>
+                                        <p>#{ficheSinistreBoMB.util.dateToString(ficheSinistreBoMB.sinistre.dnConducteur)}</p>
+                                        <p>#{ficheSinistreBoMB.sinistre.adresseConducteur}</p>
+                                    </div>
+                                </div>                                    
+                                <h6>Permis</h6>
+                                <div class="mdl-grid">
+
+                                    <div class="mdl-cell mdl-cell--4-col">
+                                        <p>N° #{ficheSinistreBoMB.sinistre.nopermis} </p>
+                                        <p>Catégorie #{ficheSinistreBoMB.sinistre.catPermis}</p>
+                                        <p>Validé du : #{ficheSinistreBoMB.util.dateToString(ficheSinistreBoMB.sinistre.debValidite)}</p>
+                                        <p>Date de délivrance : </p>
+                                        <p>Lieu de délivrance : </p>
+                                    </div>
+                                    <div class="mdl-cell mdl-cell--8-col">
+                                        <p>Duplicata N° #{ficheSinistreBoMB.sinistre.noduplicata}</p>
+                                        <p>Cat. validées #{ficheSinistreBoMB.sinistre.catValidees}</p>
+                                        <p>au : #{ficheSinistreBoMB.util.dateToString(ficheSinistreBoMB.sinistre.finValidite)}</p>
+                                        <p>#{ficheSinistreBoMB.util.dateToString(ficheSinistreBoMB.sinistre.dateDelivrance)}</p>
+                                        <p>#{ficheSinistreBoMB.sinistre.lieuDelivrance}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mdl-tabs__panel" id="dommages-panel"> 
+
+                                <f:view>
+                                    <h:panelGroup id="list-dommages-parent" >
+                                        <h:panelGroup id="list-dommages">
+                                            <ui:repeat value="#{ficheSinistreBoMB.dommages}" var="dommage">
+                                                <li>#{dommage.amDommageId.libelle}</li>
+                                            </ui:repeat>
+                                        </h:panelGroup>
+                                    </h:panelGroup>
+                                </f:view>
+
+
+                            </div>
+
+                            <!--circonstances du sinistre-->
+                            <div class="mdl-tabs__panel" id="circonstance-panel">
+                                <p>#{ficheSinistreBoMB.sinistre.details}</p>
+
+                            </div>
+
+                            <!--rapports d'expertise-->
+                            <div class="mdl-tabs__panel" id="rapports-panel">
+                                <h:form>
+                                    <div class="mdl-textfield mdl-js-textfield">
+                                        <h:inputTextarea class="mdl-textfield__input" value="#{ficheSinistreBoMB.nouveauRapport}"
+                                                         rows= "5" id="description"></h:inputTextarea>
+                                        <label class="mdl-textfield__label" for="description">Rapport</label>
+                                    </div>
+                                    <h:commandButton 
+                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                        action="#{ficheSinistreBoMB.ajouterRapport(ficheSinistreBoMB.idSinistre)}"
+                                        value="Ajouter">
+                                        <f:ajax execute="@form" render=":liste-rapport"/>
+                                    </h:commandButton>
+                                </h:form>
+                                <h:panelGroup id="liste-rapport">
+                                    <h:panelGroup>
+                                        <ui:repeat value="#{ficheSinistreBoMB.rapports}" var="rapport">
+                                            <p><h:outputText value="#{rapport.description}"/></p>
+                                        </ui:repeat>
+                                    </h:panelGroup>
+                                </h:panelGroup>
+
+                            </div>
+                            <!--photos-->
+                            <div class="mdl-tabs__panel" id="photos-panel">
+                                <h:panelGroup id="list-photos">
+                                    <h:panelGroup>
+                                        <ui:repeat value="#{ficheSinistreBoMB.photos}" var="photo">
+                                            <h:graphicImage value="/resources/photos_sinistre/#{photo.photo}"/>
+
+                                        </ui:repeat>
+                                    </h:panelGroup>
+                                </h:panelGroup>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h5>Véhicule</h5>
+
+                        <h:outputLabel value="Marque : " for="marque"/>
+                        <h:outputText value="#{ficheSinistreBoMB.vehicule.marque}" id="marque"/>
+                        <br></br>
+                        <h:outputLabel value="Carrosserie : " for="carros"/>
+                        <h:outputText value="#{ficheSinistreBoMB.vehicule.carrosserie}" id="carros"/>
+                        <br></br>
+                        <h:outputLabel value="N° immatriculation : " for="noimm"/>
+                        <h:outputText value="#{ficheSinistreBoMB.vehicule.noimm}" id="noimm"/>
+                        <br></br>              
+                        <h:outputLabel value="Date de mise en circulation : " for="datemise"/>
+                        <h:outputText value="#{ficheSinistreBoMB.util.dateToString(ficheSinistreBoMB.vehicule.dateMiseEnCirc)}" id="datemise"/>
+                        <br></br>          
+                        <h:outputLabel value="N° de série du type : " for="noserie"/>
+                        <h:outputText value="#{ficheSinistreBoMB.vehicule.noserie}" id="noserie"/>
+                        <br></br>
+                        <h:outputLabel value="Puissance : " for="puissance" />
+                        &nbsp;
+                        <h:outputText id="puissance" value="#{ficheSinistreBoMB.vehicule.puissanceFisc} CV" title="puissance" />
+                        <br></br>
+                        <h:outputLabel value="Nb Place : " for="place" />
+                        &nbsp;
+                        <h:outputText id="place" value="#{ficheSinistreBoMB.vehicule.nbPlace}" title="place" />
+                        <br></br>
+                        <h:outputLabel value="Source d'energie : " for="sourceenergie" />
+                        &nbsp;
+                        <h:outputText id="sourceenergie" value="#{ficheSinistreBoMB.vehicule.sourceEnergie}" title="sourceenergie" />
+                    </div>                    
+
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h5>Garanties</h5>
+                        <ul class="demo-list-two mdl-list">
+                            <ui:repeat value="#{ficheSinistreBoMB.listegaranti}" var="item">
+                                <li class="mdl-list__item mdl-list__item--two-line">
+                                    <span class="mdl-list__item-primary-content">
+
+                                        <span><h:outputText value="#{item.amGarantiId.libelle}"/></span>
+                                        <span class="mdl-list__item-sub-title"><h:outputText value="#{item.mtlimite} Ar"/></span>
+                                    </span>
+                                </li>
+
+                            </ui:repeat>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

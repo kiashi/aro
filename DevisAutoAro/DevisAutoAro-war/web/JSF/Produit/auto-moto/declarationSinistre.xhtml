@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <f:metadata>  
+        <f:viewParam name="idSouscription" value="#{declarationSinistreMB.idSouscription}"  
+                     required="true"/>  
+    </f:metadata>
+    <body>
+
+        <ui:composition template="./../../../WEB-INF/template-front/md-template.xhtml">
+
+            <ui:define name="content">
+                <div class="android-more-section">
+                    <f:view>
+
+
+
+                        <h4><h:outputText value="Déclaration de sinistre"/></h4> 
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--8-col">
+                                <h:form>
+                                    
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="daty" value="#{declarationSinistreMB.nouveauSinistre.daty}" class="mdl-textfield__input"  title="Date" >
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:inputText>
+                                        <label class="mdl-textfield__label" for="daty">Date </label>
+                                        <h:message for="daty"></h:message>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="heure" class="mdl-textfield__input" value="#{declarationSinistreMB.nouveauSinistre.heure}" title="Heure" />
+                                        <label class="mdl-textfield__label" for="heure">Heure</label>
+                                        <span class="mdl-textfield__error"><h:message for="heure"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                        <h:inputText class="mdl-textfield__input"  id="lieu" value="#{declarationSinistreMB.nouveauSinistre.lieu}" title="Lieu" />
+                                        <label class="mdl-textfield__label" for="lieu">Lieu</label>
+                                        <span class="mdl-textfield__error"><h:message for="lieu"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:selectOneMenu id="categorie" class="mdl-textfield__input"  value="#{declarationSinistreMB.nouveauSinistre.categorie}" title="Categorie" required="true" requiredMessage="The Categorie field is required."
+                                                         converter="#{declarationSinistreMB.categorieConverter}">
+                                            <f:selectItems value="#{declarationSinistreMB.listeCategories}" 
+                                                           var="categorieSinistre"
+                                                           itemValue="#{categorieSinistre}"
+                                                           itemLabel="#{categorieSinistre.libelle}"/>
+                                        </h:selectOneMenu>
+                                        <label class="mdl-textfield__label" for="categorie">Categorie:</label>
+                                    </div>
+
+                                    <h6>Conducteur</h6>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="conducteur" value="#{declarationSinistreMB.nouveauSinistre.conducteur}" class="mdl-textfield__input"  title="Qui a conduit ?" />
+                                        <label class="mdl-textfield__label" for="conducteur">Qui a conduit ?</label>
+                                        <span class="mdl-textfield__error"><h:message for="conducteur"></h:message></span>
+                                    </div>
+                                    <br></br>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                        <h:inputText id="nomConducteur" value="#{declarationSinistreMB.nouveauSinistre.nomConducteur}" title="Nom" class="mdl-textfield__input" />
+                                        <label class="mdl-textfield__label" for="nomConducteur">Nom</label>
+                                        <span class="mdl-textfield__error"><h:message for="nomConducteur"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="prenomConducteur" class="mdl-textfield__input" value="#{declarationSinistreMB.nouveauSinistre.prenomConducteur}" title="Prénoms" />
+                                        <label class="mdl-textfield__label" for="prenomConducteur">Prénoms</label>
+                                        <span class="mdl-textfield__error"><h:message for="prenomConducteur"></h:message></span>
+                                    </div>
+
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText class="mdl-textfield__input" id="dnConducteur" value="#{declarationSinistreMB.nouveauSinistre.dnConducteur}" title="Date de naissance" >
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:inputText>
+                                        
+                                        <label class="mdl-textfield__label" for="dnConducteur">Date de naissance</label>
+                                        <span class="mdl-textfield__error"><h:message for="dnConducteur"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">                                
+                                        <h:inputText class="mdl-textfield__input" id="adresseConducteur" value="#{declarationSinistreMB.nouveauSinistre.adresseConducteur}" title="Adresse" />
+                                        <label class="mdl-textfield__label" for="adresseConducteur">Adresse</label>
+                                        <span class="mdl-textfield__error"><h:message for="adresseConducteur"></h:message></span>
+                                    </div>
+
+                                    <h6>Permis de conduire</h6>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="nopermis" value="#{declarationSinistreMB.nouveauSinistre.nopermis}" title="N°" class="mdl-textfield__input" />
+                                        <label class="mdl-textfield__label" for="nopermis">N°</label>
+                                        <span class="mdl-textfield__error"><h:message for="nopermis"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText class="mdl-textfield__input" id="noduplicata" value="#{declarationSinistreMB.nouveauSinistre.noduplicata}" title="N° duplicata" />
+                                        <label class="mdl-textfield__label" for="noduplicata">N° duplicata</label>
+                                        <span class="mdl-textfield__error"><h:message for="noduplicata"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText class="mdl-textfield__input" id="catPermis" value="#{declarationSinistreMB.nouveauSinistre.catPermis}" title="Catégories" />
+                                        <label class="mdl-textfield__label" for="catPermis">Catégories</label>
+                                        <span class="mdl-textfield__error"><h:message for="catPermis"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="catValidees" class="mdl-textfield__input" value="#{declarationSinistreMB.nouveauSinistre.catValidees}" title="Cat. validées" />
+                                        <label class="mdl-textfield__label" for="catValidees">Cat. validées</label>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText class="mdl-textfield__input" id="debValidite" value="#{declarationSinistreMB.nouveauSinistre.debValidite}" title="Validé du "  >
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:inputText>
+                                        <label class="mdl-textfield__label" for="debValidite">Validé du </label>
+                                        <span class="mdl-textfield__error"><h:message for="debValidite"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="finValidite" class="mdl-textfield__input"  value="#{declarationSinistreMB.nouveauSinistre.finValidite}" title="au"  >
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:inputText>
+                                        <label class="mdl-textfield__label" for="finValidite">au</label>
+                                        <span class="mdl-textfield__error"><h:message for="finValidite"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="dateDelivrance" class="mdl-textfield__input" value="#{declarationSinistreMB.nouveauSinistre.dateDelivrance}" title="Date de délivrance"  >
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:inputText>
+                                        <label class="mdl-textfield__label" for="dateDelivrance">Date de délivrance</label>
+                                        <span class="mdl-textfield__error"><h:message for="dateDelivrance"></h:message></span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <h:inputText id="lieuDelivrance" class="mdl-textfield__input"  value="#{declarationSinistreMB.nouveauSinistre.lieuDelivrance}" title="Lieu de délivrance" />
+                                        <label class="mdl-textfield__label" for="lieuDelivrance">Lieu de délivrance</label>
+                                        <span class="mdl-textfield__error"><h:message for="lieuDelivrance"></h:message></span>
+                                    </div>
+                                    <br></br>
+                                    <h:commandButton class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                                     action="#{declarationSinistreMB.declarerSinistre(declarationSinistreMB.idSouscription)}" 
+                                                     value="Valider"/>
+                                </h:form>
+                            </div>
+                            <div class="mdl-cell mdl-cell--4-col">
+                                <div class="mdl-card">
+                                    <div class="mdl-card__title">
+                                        Procédures
+                                    </div>
+
+                                    <div class="mdl-card__supporting-text">
+                                        The Material Design Lite (MDL) card component is a user interface element representing a virtual piece of paper that contains related data — such as a photo, some text, and a link — that are all about a single subject.
+
+                                        Cards are a convenient means of coherently displaying related content that is composed of different types of objects. They are also well-suited for presenting similar objects whose size or supported actions can vary considerably, like photos with captions of variable length. Cards have a constant width and a variable height, depending on their content.
+
+                                        Cards are a fairly new feature in user interfaces, and allow users an access point to more complex and detailed information. Their design and use is an important factor in the overall user experience. See the card component's Material Design specifications page for details.
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </f:view>
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

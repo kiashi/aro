@@ -53,13 +53,14 @@ public class DevisAutoBean {
     }
 
     public Double calculDevis(Vehicule a, List<SaisieGaranti> listeGaranti, Integer nbMois) {
+        AmCategorietarifaire catTar = amCategorietarifaireBean.findByRoues(a.getNbRoues());
         List<AmPrime> list = amPrimeBean.findByVehicule(a);
         Double primeNet = new Double(0);
         for (SaisieGaranti saisi : listeGaranti) {
             
-            primeNet += primeNettes(a.getCategorieTarifaire().getId(), saisi.getA().getId(), saisi.getLimite());
-            saisi.setPrimeNette(primeNettes(a.getCategorieTarifaire().getId(), saisi.getA().getId(), saisi.getLimite()));
-            System.out.println("idcategorie : "+a.getCategorieTarifaire().getId()+" - idgaranti "+saisi.getA().getId());
+            primeNet += primeNettes(catTar.getId(), saisi.getA().getId(), saisi.getLimite());
+            saisi.setPrimeNette(primeNettes(catTar.getId(), saisi.getA().getId(), saisi.getLimite()));
+            System.out.println("idcategorie : "+catTar.getId()+" - idgaranti "+saisi.getA().getId());
         }
         System.out.println("prime net : " + primeNet);
         return (primeNet + list.get(0).getPrimepayant())*nbMois/12;

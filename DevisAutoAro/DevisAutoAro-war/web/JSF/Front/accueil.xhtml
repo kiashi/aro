@@ -8,66 +8,51 @@
 
     <h:head>
         <title>Assurances ARO</title>
-        <script src="http://maps.google.com/maps/api/js?key=AIzaSyDrraNXh6f3CoRtbVgC_euAvIhqEVhoO9U" type="text/javascript">
-
-        </script>
+        <!--<script src="http://maps.google.com/maps/api/js?key=AIzaSyDrraNXh6f3CoRtbVgC_euAvIhqEVhoO9U" type="text/javascript">-->
+        <h:outputScript name="http://maps.google.com/maps/api/js?key=AIzaSyDrraNXh6f3CoRtbVgC_euAvIhqEVhoO9U"/>
+        <!--</script>-->
     </h:head>
-    <h:body>
 
-        <f:view>
-            <h:form>
-
-
-                <h:link rendered="#{clientSession==null}" outcome="/JSF/Front/login.xhtml" value="Se connecter"/><br></br>
-                <h:link rendered="#{clientSession==null}" outcome="/JSF/Client/ajoutClient.xhtml" value="Inscription"/><br></br>
-                <h:link rendered="#{clientSession==null}" outcome="/JSF/Produit/auto-moto/DevisAuto.xhtml" value="Devis En Ligne"/>
-                <h:outputText rendered="#{clientSession!=null}" value="Vous etes connecter en tant que :"/>
-                <h:outputText rendered="#{clientSession!=null}" value="#{clientSession.nom}"/>
-                <h:outputText rendered="#{clientSession!=null}" value="#{clientSession.prenom}"/>
-                <br></br>
-                <h:link outcome="/JSF/Produit/produits.xhtml" value="Nos Produits"/>
-                <h:commandLink rendered="#{clientSession!=null}" action="#{profilMB.information()}" value="Mon Profil"/>
-                <h:link rendered="#{clientSession!=null}" outcome="/JSF/Client/contrat.xhtml" value="Mes Contrat"/>
-
-
+    <ui:composition template="./../../WEB-INF/template-front/md-template.xhtml">
+        <ui:define name="content">
+            <f:view>
                 <h:form>
-                    <p:growl id="growl" showDetail="true" />
-                    <p:gmap rendered="#{clientSession!=null}"  center="-18.908639,47.522231" zoom="5" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
-                        <p:ajax event="overlaySelect" listener="#{markersView.onMarkerSelect}" update="growl" />
-                    </p:gmap>
+                    <div class="android-more-section" id="vehicule">
+                        <h:form>
+                            <p:growl id="growl" showDetail="true" />
+                            <p:gmap rendered="#{clientSession!=null}"  center="-18.908639,47.522231" zoom="5" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
+                                <p:ajax event="overlaySelect" listener="#{markersView.onMarkerSelect}" update="growl" />
+                            </p:gmap>
+                        </h:form>
+
+                        <br></br>
+                        <p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Localisation Aro Siege" onclick="PF('dlg').show();" />
+
+                        <h:form>
+                            <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
+                                <p:growl id="growl" showDetail="true" />
+                                <p:gmap center="-18.908639,47.522231" zoom="17" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
+                                    <p:ajax event="overlaySelect" listener="#{markersView.onMarkerSelect}" update="growl" />
+                                </p:gmap>
+
+                            </p:dialog>
+                        </h:form>
+
+
+
+                        <h:graphicImage value="/resources/imgmagasin/jeuJS.PNG" width="125" height="125"/>
+
+
+                        <p:panelGrid columns="2">
+                            <h:outputText value="QR" />
+                            <p:barcode value="0123456789" type="qr" width="100" height="100"/> 
+                        </p:panelGrid>
+                    </div>
 
                 </h:form>
-
-
-
-                <br></br>
-                <p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Localisation Aro Siege" onclick="PF('dlg').show();" />
-
-                <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
-                    <h:form>
-                        <p:growl id="growl" showDetail="true" />
-                        <p:gmap center="-18.908639,47.522231" zoom="17" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
-                            <p:ajax event="overlaySelect" listener="#{markersView.onMarkerSelect}" update="growl" />
-                        </p:gmap>
-
-                    </h:form>
-                </p:dialog>
-
-
-
-                <h:graphicImage value="/resources/imgmagasin/jeuJS.PNG" width="125" height="125"/>
-
-
-                <p:panelGrid columns="2">
-                    <h:outputText value="QR" />
-                    <p:barcode value="0123456789" type="qr" width="100" height="100"/> 
-                </p:panelGrid>
-
-            </h:form>
-        </f:view>
-
-
-    </h:body>
+            </f:view>
+        </ui:define>
+    </ui:composition>
 
 </html>
 

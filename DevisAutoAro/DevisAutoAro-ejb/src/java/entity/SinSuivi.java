@@ -5,9 +5,10 @@
  */
 package entity;
 
+import entity.AmSinistre;
+import entity.BaseModele;
 import java.io.Serializable;
 import java.math.BigInteger;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,11 +37,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "SinSuivi.findByLibelle", query = "SELECT s FROM SinSuivi s WHERE s.libelle = :libelle")
     , @NamedQuery(name = "SinSuivi.findByFait", query = "SELECT s FROM SinSuivi s WHERE s.fait = :fait")
     , @NamedQuery(name = "SinSuivi.findByDescription", query = "SELECT s FROM SinSuivi s WHERE s.description = :description")})
-public class SinSuivi implements Serializable {
+public class SinSuivi extends BaseModele implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.TABLE)
     @NotNull
     @Column(name = "ID")
     private Integer id;
@@ -136,7 +137,7 @@ public class SinSuivi implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.SinSuivi[ id=" + id + " ]";
+        return "com.misaina.modele.SinSuivi[ id=" + id + " ]";
     }
     
 }

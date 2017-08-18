@@ -16,6 +16,7 @@ import java.util.stream.Stream;
  * @author LENOVO
  */
 public class FileUtil {
+    public static String pathPhotoSinistre = "C:\\Users\\misa\\Documents\\GitHub\\aro\\DevisAutoAro\\DevisAutoAro-war\\web\\resources\\photos_sinistre\\";
 
     public static void writeInFile(String data, String fileName) throws IOException {
         Files.write(Paths.get(fileName), data.getBytes());

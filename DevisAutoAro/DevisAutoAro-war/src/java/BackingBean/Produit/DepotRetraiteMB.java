@@ -101,6 +101,7 @@ public class DepotRetraiteMB {
     }
 
     public String ajouterDepot(Integer id) {
+        System.out.println("huhuuuuuuuu");
         
         this.contrat = retraiteBean.findBySouscriptionId(id);
         this.produit = compteClientBean.findBySouscriptionId(id);

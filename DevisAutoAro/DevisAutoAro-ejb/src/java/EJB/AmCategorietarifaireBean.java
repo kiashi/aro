@@ -27,16 +27,24 @@ public class AmCategorietarifaireBean {
     public void persist(Object object) {
         em.persist(object);
     }
-
-    public List<AmCategorietarifaire> findByRoues(Integer a) {
-        Query cl = em.createQuery("SELECT p FROM AmCategorietarifaire p WHERE "
-                + " p.nbrouesmin <= :roues"
-                + " AND p.nbrouesmax >= :roues");
-        cl.setParameter("roues", a);
-
-        return (List<AmCategorietarifaire>) cl.getResultList();
-
+    
+    public AmCategorietarifaire findByRoues(Integer nbRoues){
+        Query query = em.createQuery("SELECT c FROM AmCategorietarifaire c WHERE"
+                + " c.nbrouesmin <= :nbroues "
+                + "AND c.nbrouesmax >= :nbroues");
+        query.setParameter("nbroues", nbRoues);
+        return (AmCategorietarifaire) query.getSingleResult();
     }
+
+//    public List<AmCategorietarifaire> findByRoues(Integer a) {
+//        Query cl = em.createQuery("SELECT p FROM AmCategorietarifaire p WHERE "
+//                + " p.nbrouesmin <= :roues"
+//                + " AND p.nbrouesmax >= :roues");
+//        cl.setParameter("roues", a);
+//
+//        return (List<AmCategorietarifaire>) cl.getResultList();
+//
+//    }
 
     public AmCategorietarifaire findById(Integer id) {
         Query cl = em.createNamedQuery("AmCategorietarifaire.findById");

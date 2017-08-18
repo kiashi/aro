@@ -6,7 +6,6 @@
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,12 +25,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "PHOTO_SINISTRE")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PhotoSinistre.findAll", query = "SELECT p FROM PhotoSinistre p")
-    , @NamedQuery(name = "PhotoSinistre.findById", query = "SELECT p FROM PhotoSinistre p WHERE p.id = :id")
-    , @NamedQuery(name = "PhotoSinistre.findByFichier", query = "SELECT p FROM PhotoSinistre p WHERE p.fichier = :fichier")})
-public class PhotoSinistre implements Serializable {
+    , @NamedQuery(name = "PhotoSinistre.findById", query = "SELECT p FROM PhotoSinistre p WHERE p.id = :id")})
+public class PhotoSinistre extends BaseModele implements Serializable {
+
+    @Size(max = 200)
+    @Column(name = "PHOTO")
+    private String photo;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,9 +40,6 @@ public class PhotoSinistre implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Size(max = 100)
-    @Column(name = "FICHIER")
-    private String fichier;
     @JoinColumn(name = "AM_SINISTRE_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private AmSinistre amSinistre;
@@ -60,14 +57,6 @@ public class PhotoSinistre implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getFichier() {
-        return fichier;
-    }
-
-    public void setFichier(String fichier) {
-        this.fichier = fichier;
     }
 
     public AmSinistre getAmSinistre() {
@@ -100,7 +89,15 @@ public class PhotoSinistre implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.PhotoSinistre[ id=" + id + " ]";
+        return "com.misaina.modele.PhotoSinistre[ id=" + id + " ]";
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
     
 }

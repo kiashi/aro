@@ -81,7 +81,6 @@ public class ClientMB {
     }
 
     public String ajouterClient() {
-        System.out.println("___________" + client);
         Agence agence = new Agence();
 
         //fixe type client
@@ -95,7 +94,7 @@ public class ClientMB {
         client.setAgence(agence);
         clientBean.save(client);
 
-        MessageUtil.addFlashInfoMessage("Ajouter");
+        MessageUtil.addFlashInfoMessage("Vous êtes maintenant inscrit. Vous pouvez maintenant vous conntecter");
         return "/JSF/Front/accueil?faces-redirect=true";
     }
     private List<ClType> listeTypeClient;
