@@ -62,8 +62,10 @@ a img{
 
 
 .android-logo-image {
-  height: 28px;
-  width: 140px;
+    padding-bottom: 11px;
+    margin-top:25px;
+  height: 60px;
+  width: 160px;
 }
 
 
@@ -172,7 +174,7 @@ a img{
 
 .android-be-together-section {
   position: relative;
-  height: 400px;
+  height: 490px;
   width: auto;
   background-color: #f3f3f3;
   background: url('slide01.jpg') center 30% no-repeat;
@@ -180,15 +182,18 @@ a img{
 }
 
 .logo-font {
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: Baskerville Old Face;
   line-height: 1;
-  color: #767777;
+  color: #17752c;
   font-weight: 500;
+  margin-right:50px;
+  
 }
 
 .android-slogan {
   font-size: 60px;
-  padding-top: 160px;
+  padding-top: 50px;
+  
 }
 
 .android-sub-slogan {
@@ -391,15 +396,19 @@ a img{
   }
 
 .android-card-container {
+    
 }
 
   .android-card-container .mdl-card__media {
     overflow: hidden;
     background: transparent;
+    height: 90px;
   }
 
     .android-card-container .mdl-card__media img {
-      width: 100%;
+      width: 242px;
+      height: 90px;
+      padding-top: 20px;
     }
 
   .android-card-container .mdl-card__title {

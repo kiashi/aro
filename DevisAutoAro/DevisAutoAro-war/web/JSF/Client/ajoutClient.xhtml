@@ -48,9 +48,10 @@
 
 
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <h:inputText  class="mdl-textfield__input"  id="dateNaissance" value="#{clientMB.client.dateNaissance}" title="DateNaissance" >
-                                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                                            </h:inputText>
+                                           
+                                                <p:calendar id="dateNaissance" value="#{clientMB.client.dateNaissance}"  locale="de" navigator="true" pattern="dd-MMM-yyyy" />
+                                                
+                                            
                                             <label class="mdl-textfield__label" for="dateNaissance">Date de naissance</label>
                                             <h:message for="dateNaissance"></h:message>
                                         </div>
@@ -84,7 +85,8 @@
 
 
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <h:inputText  class="mdl-textfield__input"  id="mdp" value="#{clientMB.client.mdp}" title="Mdp" />
+                                            
+                                            <p:password class="mdl-textfield__input" id="mdp" value="#{clientMB.client.mdp}" feedback="true" title="Mdp"/>
                                             <label class="mdl-textfield__label" for="mdp">Mdp</label>
                                             <h:message for="mdp"></h:message>
                                         </div>
@@ -99,8 +101,7 @@
 
                                         
                                         <p>Signature</p>
-                                        <p:growl autoUpdate="true" />
-
+                                       
                                         <p:signature style="width:400px;height:200px" widgetVar="sig" value="#{clientMB.client.signature}" required="true" guideline="true"/>
 
                                         <div style="margin:20px 0">
@@ -109,8 +110,8 @@
                                         </div>
 
                                         <p:outputPanel id="output">
-                                            <h:outputText value="#{clientMB.client.signature}"/>
-                                            <h:outputText rendered="#{not empty clientMB.client.signature}" style="font-size:24px;display:block" value="Your Signature" />
+                                            
+                                            <h:outputText rendered="#{not empty clientMB.client.signature}" style="font-size:24px;display:block" value="Votre Signature" />
                                             <p:signature style="width:400px;height:200px;" value="#{clientMB.client.signature}" readonly="true"
                                                          rendered="#{not empty clientMB.client.signature}" backgroundColor="#eaeaea" color="#03a9f4"/>
                                         </p:outputPanel>

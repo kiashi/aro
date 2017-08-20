@@ -18,39 +18,87 @@
             <f:view>
                 <h:form>
                     <div class="android-be-together-section mdl-typography--text-center">
-                        <div class="logo-font android-slogan"></div>
-                        <div class="logo-font android-sub-slogan"></div>
+                        <div class="logo-font android-slogan">Assurances ARO</div>
+                        <div class="logo-font android-sub-slogan">"Miaina sy mihary, mandry ivohon'ny vato"</div>
 
 
 
                         <a href="#screens">
-                            
+
                         </a>
                     </div>
                     <div class="android-more-section" id="vehicule">
 
-                       
-                        <p:commandButton id="btn" type="button" icon="ui-icon-pin-s" value="Localisation Aro Siege" onclick="PF('dlg').show();" />
-
-                        <h:form>
-                            <p:dialog id="gmapDialog" widgetVar="dlg" width="625" height="400" modal="true">
-                                <p:growl id="growl" showDetail="true" />
-                                <p:gmap center="-18.908639,47.522231" zoom="17" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" streetView="true">
-                                    <p:ajax event="overlaySelect" listener="#{markersView.onMarkerSelect}" update="growl" />
-                                </p:gmap>
-
-                            </p:dialog>
-                        </h:form>
+                        <div class="android-card-container mdl-grid">
+                            <ui:repeat value="#{produitMB.listeProduit}" var ="item">
 
 
+                                <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                                    <div class="mdl-card__media">
 
-                        <h:graphicImage value="/resources/imgmagasin/jeuJS.PNG" width="125" height="125"/>
+                                        <!--<h:graphicImage value="/resources/material-design/css/.jpg" />-->
+                                    </div>
+                                    <div class="mdl-card__title">
+                                        <h4 class="mdl-card__title-text"><h:outputText value="#{item.intitule}" /></h4>
+                                    </div>
+                                    <div class="mdl-card__supporting-text">
+                                        <span class="mdl-typography--font-light mdl-typography--subhead"><h:outputText value="#{item.description}" /></span>
+                                    </div>
+                                    <div class="mdl-card__actions">
+                                        <p:commandButton class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" rendered="#{clientSession==null}" onclick="PF('dlg').show();" value="Information"/>
+                                        <p:dialog header="#{item.intitule}" widgetVar="dlg" minimizable="true" maximizable="true">
+                                            <h:outputText value="#{item.description}" />
+                                        </p:dialog>
 
 
-                        <p:panelGrid columns="2">
-                            <h:outputText value="QR" />
-                            <p:barcode value="0123456789" type="qr" width="100" height="100"/> 
-                        </p:panelGrid>
+                                        <h:link class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" rendered="#{clientSession!=null}" outcome="/JSF/Produit/#{item.nompage}/#{item.nompage}?idProduit=#{item.id}" includeViewParams="true" value="Se souscrire">
+                                            <i class="material-icons">chevron_right</i>
+                                        </h:link>
+                                    </div>
+                                </div>
+
+                            </ui:repeat>
+                            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                                <div class="mdl-card__media">
+                                    <!--<h:graphicImage value="/resources/material-design/css/voyage.JPG" />-->
+                                </div>
+                                <div class="mdl-card__title">
+                                    <h4 class="mdl-card__title-text">Voyage</h4>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    <span class="mdl-typography--font-light mdl-typography--subhead">"Pensez aux êtres qui vous sont chers et faites confiance à l'Assurance ARO."</span>
+                                </div>
+                                <div class="mdl-card__actions">
+                                    <p:commandButton class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" rendered="#{clientSession==null}" onclick="PF('dlg').show();" value="Information"/>
+                                    <p:dialog header="#{item.intitule}" widgetVar="dlg" minimizable="true" maximizable="true">
+                                        <h:outputText value="#{item.description}" />
+                                    </p:dialog>
+                                    <h:link class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" rendered="#{clientSession!=null}"  includeViewParams="true" value="Se souscrire">
+                                        <i class="material-icons">chevron_right</i>
+                                    </h:link>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                                <div class="mdl-card__media">
+                                    <!--<h:graphicImage value="/resources/material-design/css/tanteraka.JPG" />-->
+                                </div>
+                                <div class="mdl-card__title">
+                                    <h4 class="mdl-card__title-text">Aro tanteraka</h4>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    <span class="mdl-typography--font-light mdl-typography--subhead">« Chefs d’entreprise, groupements d’employés, Associations. »</span>
+                                </div>
+                                <div class="mdl-card__actions">
+                                    <p:commandButton class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" rendered="#{clientSession==null}" onclick="PF('dlg').show();" value="Information"/>
+                                    <p:dialog header="#{item.intitule}" widgetVar="dlg" minimizable="true" maximizable="true">
+                                        <h:outputText value="#{item.description}" />
+                                    </p:dialog>
+                                    <h:link class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" rendered="#{clientSession!=null}"  includeViewParams="true" value="Se souscrire">
+                                        <i class="material-icons">chevron_right</i>
+                                    </h:link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </h:form>
